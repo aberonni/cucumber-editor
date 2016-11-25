@@ -4,6 +4,8 @@ import { SortablejsOptions } from 'angular-sortablejs';
 import { Step } from './step';
 import { Scenario } from './scenario';
 
+import { SpyStepsService } from './spy-steps.service';
+
 @Component({
   selector: 'my-scenario-editor',
   template: `
@@ -12,24 +14,27 @@ import { Scenario } from './scenario';
         <span class="badge">{{step.type}}</span>{{step.name}}
       </li>
       <li class="add"
-      	(click)="onAdd(scenario.steps)">
+      	(click)="onAdd()">
       	ADD
-      </li>	
+      </li>
     </ul>
   `
 })
 export class ScenarioEditorComponent /*implements OnInit*/ {
-  @Input() scenario: Scenario[];
+  @Input() scenario: Scenario;
 
-  options: SortablejsOptions = {
+  private options: SortablejsOptions = {
     group: 'steps',
+    draggable: '.step',
     animation: 150
   };
 
-  onAdd(steps: Step[]): void {
-    steps.push({
-    	name: 'New step',
-    	type: 'And'
+  constructor(private spyStepsService: SpyStepsService) { }
+  
+  onAdd(): void {
+    this.spyStepsService.getSteps().then(steps => {
+      let step = {name: steps[0].name, type: steps[0].type} as Step;
+      this.scenario.steps.push(step);
     })
   }
 
