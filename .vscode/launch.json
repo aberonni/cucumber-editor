@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Program",
+            "program": "${workspaceRoot}/dist/server/server.js",
+            "cwd": "${config.gherkin.editor.debug.cwd}",
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/dist",
+            "preLaunchTask": "build"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Collega a processo",
+            "port": 5858,
+            "outFiles": [],
+            "sourceMaps": true
+        }
+    ]
+}
