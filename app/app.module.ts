@@ -1,22 +1,28 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { SortablejsModule } from 'angular-sortablejs';
 
 import { AppComponent }  from './app.component';
 import { GherkinEditorComponent } from './gherkin-editor.component';
+import { ScenarioEditorComponent } from './scenario-editor.component';
 
-import { StepService } from './step.service';
+import { ScenarioService } from './scenario.service';
 
 @NgModule({
   imports: [
-    BrowserModule
+    BrowserModule,
+    SortablejsModule
   ],
   declarations: [
     AppComponent,
-    GherkinEditorComponent
+    GherkinEditorComponent,
+    ScenarioEditorComponent
   ],
-  bootstrap: [ AppComponent ],
+  bootstrap: [ 
+    AppComponent 
+  ],
   providers: [
-  	StepService
+  	ScenarioService
   ]
 })
 export class AppModule { }

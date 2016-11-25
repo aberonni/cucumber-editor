@@ -20,6 +20,9 @@ body {
   height: 1.6em;
   border-radius: 4px;
 }
+.steps .sortable-ghost {
+  opacity: 0.5;
+}
 .steps .badge {
   display: inline-block;
   font-size: small;

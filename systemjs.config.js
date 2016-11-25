@@ -24,7 +24,10 @@
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       // other libraries
       'rxjs':                      'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+      // sortablejs
+      'angular-sortablejs': 'node_modules/angular-sortablejs',
+      'sortablejs': 'node_modules/sortablejs/Sortable.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -34,6 +37,10 @@
       },
       rxjs: {
         defaultExtension: 'js'
+      },
+      'angular-sortablejs': { 
+        main: 'index.js', 
+        defaultExtension: 'js' 
       }
     }
   });
