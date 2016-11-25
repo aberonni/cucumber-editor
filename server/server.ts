@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 
+import { Config } from './config';
 import { SpyParser } from './SpyParser';
+import { Step } from '../app/step';
 
 let path = require('path');
 let open = require('open');
+let glob = require('glob');
 let express = require('express');
 
+let config = new Config();
 let spyParser = new SpyParser();
 
 let app = express();
@@ -20,9 +24,27 @@ app.get('/', (req, res) => {
 });
 
 app.get('/steps', (req, res) => {
-	let file = path.join(process.cwd(), "scripts\\steps\\common-steps.js");
-	spyParser.getSteps(file).then((steps) => {
-        res.json(steps);
+    let allSteps = [];
+
+    let addSteps = (file: string): Promise<Step[]> => {
+        return new Promise((res, rej)=> {
+            spyParser.getSteps(file).then((steps) => {
+                allSteps = allSteps.concat(steps);
+                res();
+            });
+        });
+    }
+
+    var stepsFolder = path.join(process.cwd(), config.steps_folder);
+
+    glob(path.join(stepsFolder, "**/*.js"), {}, (err, files: string[]) => {
+        if(err || !files) {
+            throw new Error("No step files found in " + stepsFolder);
+        }
+
+        Promise.all(files.map(addSteps)).then(()=>{
+            res.json(allSteps);
+        });
     });
 });
 
