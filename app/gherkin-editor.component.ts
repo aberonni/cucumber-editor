@@ -1,29 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Scenario } from './scenario';
-import { ScenarioService } from './scenario.service';
 
 @Component({
   selector: 'my-gherkin-editor',
   template: `
     <div class="scenarios">
-      <div *ngFor="let scenario of scenarios" class="scenario-draggable">
-        <h2 class="scenario-handle">{{scenario.name}}</h2>
+      <div *ngFor="let scenario of scenarios" class="scenario">
+        <div class="scenario-handle">
+          <label>Scenario: </label>
+          <input [(ngModel)]="scenario.name" placeholder="name"/>
+        </div>
         <my-scenario-editor [scenario]="scenario"></my-scenario-editor>
       </div>
+      <button class="add"
+        (click)="onAdd()">
+        ADD SCENARIO
+      </button>
     </div>
   `
 })
-export class GherkinEditorComponent implements OnInit {
-  scenarios: Scenario[];
-  
-  getScenarios(): void {
-    this.scenarioService.getScenarios().then(scenarios => this.scenarios = scenarios)
-  }
+export class GherkinEditorComponent {
+  scenarios: Scenario[] = [];
 
-  constructor(private scenarioService: ScenarioService) { }
-
-  ngOnInit(): void {
-    this.getScenarios();
+  onAdd(): void {
+    this.scenarios.push(new Scenario());
   }
 }

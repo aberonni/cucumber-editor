@@ -13,10 +13,10 @@ import { SpyStepsService } from './spy-steps.service';
       <li *ngFor="let step of scenario.steps" class="step">
         <span class="badge">{{step.type}}</span>{{step.name}}
       </li>
-      <li class="add"
+      <button class="add"
       	(click)="onAdd()">
-      	ADD
-      </li>
+      	ADD STEP
+      </button>
     </ul>
   `
 })
@@ -24,7 +24,6 @@ export class ScenarioEditorComponent /*implements OnInit*/ {
   @Input() scenario: Scenario;
 
   private options: SortablejsOptions = {
-    group: 'steps',
     draggable: '.step',
     animation: 150
   };

@@ -4,8 +4,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.scenario { 
+  padding: 1em;
+  margin: 1em 0;
+  border: 1px solid lightgray;
+}
+
 .steps {
-  margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
   width: 24em;
