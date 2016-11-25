@@ -2,8 +2,7 @@
   "name": "gherkin-editor",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
-    "lite": "lite-server",
+    "start": "tsc && concurrently \"tsc -w\" \"node dist/server/server.js\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w"
   },
@@ -26,6 +25,8 @@
     "angular-in-memory-web-api": "~0.1.15",
     "angular-sortablejs": "^1.0.1",
     "core-js": "^2.4.1",
+    "express": "^4.14.0",
+    "open": "0.0.5",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.39",
@@ -35,7 +36,9 @@
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.45",
     "concurrently": "^3.0.0",
-    "lite-server": "^2.2.2",
     "typescript": "^2.0.3"
+  },
+  "bin": {
+    "gherkin-editor": "dist/server/server.js"
   }
 }
