@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { SortablejsOptions } from 'angular-sortablejs';
 
 import { Step } from './step';
@@ -9,34 +9,54 @@ import { SpyStepsService } from './spy-steps.service';
 @Component({
   selector: 'scenario',
   template: `
-    <div>
-      <label>Scenario: </label>
-      <input [(ngModel)]="scenario.name" placeholder="name"/>
+    <div class="panel-heading"><div class="input-group">
+        <div class="input-group-addon">Scenario:</div>
+        <input 
+          type="text"
+          [(ngModel)]="scenario.name" 
+          class="form-control" 
+          placeholder="Name">
+      </div></div>
+    <div class="panel-body">
+      <div class="steps" [sortablejs]="scenario.steps" [sortablejsOptions]="sortableOptions">
+        <step *ngFor="let step of scenario.steps" [step]="step"></step>
+      </div>
+      <input auto-complete 
+        [(ngModel)]="newStep" 
+        [source]="stepLib" 
+        auto-complete-placeholder="Click here to add a new step"
+        placeholder="Click here to add a new step"
+        display-property-name="name"
+        (valueChanged)="addStep(newStep)"/>
     </div>
-    <div class="steps" [sortablejs]="scenario.steps" [sortablejsOptions]="options">
-      <step *ngFor="let step of scenario.steps" [step]="step"></step>
-    </div>
-    <button class="add"
-      (click)="onAdd()">
-      ADD STEP
-    </button>
   `
 })
-export class ScenarioComponent {
+export class ScenarioComponent implements OnInit {
   @Input() scenario: Scenario;
+  
+  private stepLib: Step[];
+  private newStep: Step;
 
-  private options: SortablejsOptions = {
+  private sortableOptions: SortablejsOptions = {
     draggable: 'step',
     animation: 150
   };
 
-  constructor(private spyStepsService: SpyStepsService) { }
-  
-  onAdd(): void {
-    this.spyStepsService.getSteps().then(steps => {
-      let step = {name: steps[0].name, type: steps[0].type} as Step;
-      this.scenario.steps.push(step);
-    })
+  private addStep(step: Step): void {
+    if(!step)
+      return;
+
+    this.scenario.steps.push({
+      name: step.name, 
+      type: step.type
+    } as Step);
+
+    this.newStep = {name: ''} as Step;
   }
 
+  constructor(private spyStepsService: SpyStepsService) { }
+  
+  ngOnInit(): void {
+    this.spyStepsService.getSteps().then(steps => this.stepLib = steps);
+  }
 }

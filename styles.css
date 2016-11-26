@@ -1,20 +1,9 @@
 body {
-  margin: 2em;
-  color: #888;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-scenario {
-  display: block; 
   padding: 1em;
-  margin: 1em 0;
-  border: 1px solid lightgray;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-
-.steps {
-  list-style-type: none;
-  padding: 0;
-  width: 24em;
+scenario {
+  display: block;
 }
 .sortable-ghost {
   opacity: 0.5;
@@ -22,25 +11,18 @@ scenario {
 step {
   display: block;
   cursor: pointer;
-  position: relative;
-  left: 0;
-  background-color: #EEE;
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
+  margin-bottom: 6px;
 }
-step .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #607D8B;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
+.ng2-auto-complete {
+  display: block !important;
+}
+samp > .ng2-auto-complete {
+  margin-top: 3px;
+}
+.ng2-auto-complete input {
+  display: block;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0 !important;
 }

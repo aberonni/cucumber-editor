@@ -5,7 +5,7 @@ import { Step } from './step';
 @Component({
   selector: 'step',
   template: `
-    <span class="badge">{{step.type}}</span>{{step.name}}
+    <mark>{{step.type}}</mark> {{step.name}}
   `
 })
 export class StepComponent {

@@ -6,10 +6,11 @@ import { Scenario } from './scenario';
   selector: 'gherkin-editor',
   template: `
     <div class="scenarios">
-      <scenario *ngFor="let scenario of scenarios" [scenario]="scenario"></scenario>
-      <button class="add"
+      <scenario class="panel panel-default" *ngFor="let scenario of scenarios" [scenario]="scenario"></scenario>
+      <button 
+        class="btn btn-default center-block"
         (click)="onAdd()">
-        ADD SCENARIO
+        Add Scenario
       </button>
     </div>
   `
