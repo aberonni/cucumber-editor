@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 import { SortablejsModule } from 'angular-sortablejs';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 import { AppComponent }  from './app.component';
 import { GherkinEditorComponent } from './gherkin-editor.component';
@@ -16,7 +17,8 @@ import { SpyStepsService } from './spy-steps.service';
     BrowserModule,
     FormsModule,
     SortablejsModule,
-    HttpModule
+    HttpModule,
+    Ng2AutoCompleteModule
   ],
   declarations: [
     AppComponent,

@@ -27,7 +27,8 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
       // sortablejs
       'angular-sortablejs': 'node_modules/angular-sortablejs',
-      'sortablejs': 'node_modules/sortablejs/Sortable.js'
+      'sortablejs': 'node_modules/sortablejs/Sortable.js',
+      'ng2-auto-complete': 'node_modules/ng2-auto-complete/dist'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -40,6 +41,10 @@
       },
       'angular-sortablejs': { 
         main: 'index.js', 
+        defaultExtension: 'js' 
+      },
+      'ng2-auto-complete': { 
+        main: 'ng2-auto-complete.umd.js', 
         defaultExtension: 'js' 
       }
     }
