@@ -7,7 +7,7 @@ import { Step } from './step';
 
 @Injectable()
 export class SpyStepsService {
-  private stepsUrl = 'steps';
+  private steps: Step[];
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
@@ -17,10 +17,13 @@ export class SpyStepsService {
   constructor (private http: Http) {}
 
   getSteps(): Promise<Step[]> {
-    return this.http.get(this.stepsUrl)
+    if(this.steps != null)
+      Promise.resolve(this.steps);
+
+    return this.http.get("steps")
                .toPromise()
                .then(response => {
-                 return response.json() as Step[]
+                 return this.steps = response.json() as Step[];
                })
                .catch(this.handleError);
   }
