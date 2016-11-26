@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/steps', (req, res) => {
-    let allSteps = [];
+    let allSteps: Step[] = [];
 
     let addSteps = (file: string): Promise<Step[]> => {
         return new Promise((res, rej)=> {
@@ -37,7 +37,7 @@ app.get('/steps', (req, res) => {
 
     var stepsFolder = path.join(process.cwd(), config.steps_folder);
 
-    glob(path.join(stepsFolder, "**/*.js"), {}, (err, files: string[]) => {
+    glob(path.join(stepsFolder, "**/*.js"), {}, (err: Error, files: string[]) => {
         if(err || !files) {
             throw new Error("No step files found in " + stepsFolder);
         }
@@ -56,7 +56,7 @@ app.get('/components', (req, res) => {
 });
 
 app.listen(nodePort, '0.0.0.0', () => {
-    open('http://localhost:' + nodePort, (err) => {
+    open('http://localhost:' + nodePort, (err: Error) => {
         if (err) {
 			console.log(new Date() + ' Listening on port: ' + nodePort);
         }
