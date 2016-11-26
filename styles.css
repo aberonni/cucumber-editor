@@ -4,7 +4,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.scenario { 
+scenario {
+  display: block; 
   padding: 1em;
   margin: 1em 0;
   border: 1px solid lightgray;
