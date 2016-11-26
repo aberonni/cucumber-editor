@@ -26,3 +26,6 @@ samp > .ng2-auto-complete {
   outline: none;
   padding: 0 !important;
 }
+.form-control {
+  z-index: initial !important;
+}
