@@ -9,18 +9,16 @@ import { SpyStepsService } from './spy-steps.service';
 @Component({
   selector: 'my-scenario-editor',
   template: `
-    <ul class="steps" [sortablejs]="scenario.steps" [sortablejsOptions]="options">
-      <li *ngFor="let step of scenario.steps" class="step">
-        <span class="badge">{{step.type}}</span>{{step.name}}
-      </li>
+    <div class="steps" [sortablejs]="scenario.steps" [sortablejsOptions]="options">
+      <step *ngFor="let step of scenario.steps" [step]="step"></step>
       <button class="add"
       	(click)="onAdd()">
       	ADD STEP
       </button>
-    </ul>
+    </div>
   `
 })
-export class ScenarioEditorComponent /*implements OnInit*/ {
+export class ScenarioEditorComponent {
   @Input() scenario: Scenario;
 
   private options: SortablejsOptions = {

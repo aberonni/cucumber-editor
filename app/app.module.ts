@@ -7,6 +7,7 @@ import { SortablejsModule } from 'angular-sortablejs';
 import { AppComponent }  from './app.component';
 import { GherkinEditorComponent } from './gherkin-editor.component';
 import { ScenarioEditorComponent } from './scenario-editor.component';
+import { StepComponent } from './step.component';
 
 import { SpyStepsService } from './spy-steps.service';
 
@@ -20,7 +21,8 @@ import { SpyStepsService } from './spy-steps.service';
   declarations: [
     AppComponent,
     GherkinEditorComponent,
-    ScenarioEditorComponent
+    ScenarioEditorComponent,
+    StepComponent
   ],
   bootstrap: [ 
     AppComponent 

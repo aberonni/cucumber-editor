@@ -15,7 +15,11 @@ body {
   padding: 0;
   width: 24em;
 }
-.steps li {
+.sortable-ghost {
+  opacity: 0.5;
+}
+step {
+  display: block;
   cursor: pointer;
   position: relative;
   left: 0;
@@ -25,10 +29,7 @@ body {
   height: 1.6em;
   border-radius: 4px;
 }
-.steps .sortable-ghost {
-  opacity: 0.5;
-}
-.steps .badge {
+step .badge {
   display: inline-block;
   font-size: small;
   color: white;
