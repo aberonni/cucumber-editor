@@ -15,7 +15,7 @@ import { Scenario } from './scenario';
   `
 })
 export class GherkinEditorComponent {
-  scenarios: Scenario[] = [];
+  scenarios: Scenario[] = [new Scenario()];
 
   onAdd(): void {
     this.scenarios.push(new Scenario());
