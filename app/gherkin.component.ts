@@ -1,12 +1,13 @@
 import { Component, Input } from '@angular/core';
 
+import { Gherkin } from './gherkin';
 import { Scenario } from './scenario';
 
 @Component({
-  selector: 'gherkin-editor',
+  selector: 'gherkin',
   template: `
     <div class="scenarios">
-      <scenario class="panel panel-default" *ngFor="let scenario of scenarios" [scenario]="scenario"></scenario>
+      <scenario class="panel panel-default" *ngFor="let scenario of gherkin.scenarios" [scenario]="scenario"></scenario>
       <button 
         class="btn btn-default center-block"
         (click)="onAdd()">
@@ -15,10 +16,10 @@ import { Scenario } from './scenario';
     </div>
   `
 })
-export class GherkinEditorComponent {
-  scenarios: Scenario[] = [new Scenario()];
+export class GherkinComponent {
+  @Input() gherkin: Gherkin;
 
   onAdd(): void {
-    this.scenarios.push(new Scenario());
+    this.gherkin.scenarios.push(new Scenario());
   }
 }

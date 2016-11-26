@@ -6,7 +6,7 @@ import { SortablejsModule } from 'angular-sortablejs';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 import { AppComponent }  from './app.component';
-import { GherkinEditorComponent } from './gherkin-editor.component';
+import { GherkinComponent } from './gherkin.component';
 import { ScenarioComponent } from './scenario.component';
 import { StepComponent } from './step.component';
 
@@ -22,7 +22,7 @@ import { SpyStepsService } from './spy-steps.service';
   ],
   declarations: [
     AppComponent,
-    GherkinEditorComponent,
+    GherkinComponent,
     ScenarioComponent,
     StepComponent
   ],
