@@ -1,26 +1,13 @@
 import { Component } from '@angular/core';
 
-import { Gherkin } from './gherkin';
-import { Scenario } from './scenario';
+import { Gherkin } from './gherkin/gherkin';
+import { Scenario } from './scenario/scenario';
 
 @Component({
   selector: 'my-app',
-  template: `
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <span class="navbar-brand" href="#">Gherkin Editor</span>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" (click)="onReset()">Reset</a></li>
-            <li class="active"><a href="#">Save</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <gherkin [gherkin]="gherkin"></gherkin>
-  `
+  moduleId: module.id.replace("/dist/", "/"),
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css']
 })
 export class AppComponent {
   private gherkin: Gherkin = this.defaultGherkin();

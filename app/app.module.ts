@@ -6,11 +6,11 @@ import { SortablejsModule } from 'angular-sortablejs';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 import { AppComponent }  from './app.component';
-import { GherkinComponent } from './gherkin.component';
-import { ScenarioComponent } from './scenario.component';
-import { StepComponent } from './step.component';
+import { GherkinComponent } from './gherkin/gherkin.component';
+import { ScenarioComponent } from './scenario/scenario.component';
+import { StepComponent } from './step/step.component';
 
-import { SpyStepsService } from './spy-steps.service';
+import { StepService } from './step/step.service';
 
 @NgModule({
   imports: [
@@ -30,7 +30,7 @@ import { SpyStepsService } from './spy-steps.service';
     AppComponent 
   ],
   providers: [
-    SpyStepsService
+    StepService
   ]
 })
 export class AppModule { }

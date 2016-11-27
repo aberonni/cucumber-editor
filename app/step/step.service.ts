@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import { Step } from './step';
 
 @Injectable()
-export class SpyStepsService {
+export class StepService {
   private steps: Step[];
 
   private handleError(error: any): Promise<any> {

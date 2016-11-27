@@ -1,4 +1,4 @@
-import { Step } from '../app/step';
+import { Step } from '../app/step/step';
 
 export class SpyParser {
     private steps :Step[];

@@ -1,4 +1,4 @@
-import { Scenario } from './scenario';
+import { Scenario } from '../scenario/scenario';
 
 export class Gherkin {
   name: string;

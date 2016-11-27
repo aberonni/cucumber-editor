@@ -2,7 +2,7 @@
 
 import { Config } from './config';
 import { SpyParser } from './SpyParser';
-import { Step } from '../app/step';
+import { Step } from '../app/step/step';
 
 let path = require('path');
 let open = require('open');
