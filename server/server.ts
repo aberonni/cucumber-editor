@@ -35,7 +35,7 @@ app.get('/steps', (req, res) => {
         });
     }
 
-    var stepsFolder = path.join(process.cwd(), config.steps_folder);
+    let stepsFolder = path.join(process.cwd(), config.steps_folder);
 
     glob(path.join(stepsFolder, "**/*.js"), {}, (err: Error, files: string[]) => {
         if(err || !files) {
