@@ -11,11 +11,9 @@ export class Step {
       str = str.slice(0, -1);
     }
 
-    str = str.replace(/\"/g,"'");
+    str = str.replace(/\(\?:([^\|]+)+\|+([^\)]+)?\)/, "$1")
 
-    str = str.replace(/'\(([^a-zA-Z0-9]+)\)'/, '"_COMPONENT_"')
-
-    str = str.replace(/\(([^a-zA-Z0-9]+)\)/, '_VALUE_')
+    str = str.replace(/\((.+)\)/, '<b>VAL</b>')
 
     return str;
   }
