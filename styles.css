@@ -1,6 +1,3 @@
-body {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-}
 my-app {
   display: block;
 }
@@ -60,15 +57,16 @@ my-app {
     opacity: 0; 
   }
 }
-
+.scenarios {
+  margin-top: 15px;
+}
 gherkin {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   display: block;
   margin-top: 50px;
   padding: 1em;
 }
-scenario {
-  display: block;
-}
+
 .sortable-ghost {
   opacity: 0.5;
 }
@@ -90,6 +88,16 @@ samp > .ng2-auto-complete {
   outline: none;
   padding: 0 !important;
 }
-.form-control {
-  z-index: initial !important;
+
+.input-group-addon {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.input-group .form-control {
+  z-index: initial;
+  padding: 1px 7px;
+  height: auto;
+  padding-left: 7px;
+  border-color: #ddd;
 }

@@ -9,25 +9,29 @@ import { SpyStepsService } from './spy-steps.service';
 @Component({
   selector: 'scenario',
   template: `
-    <div class="panel-heading"><div class="input-group">
-        <div class="input-group-addon">Scenario:</div>
-        <input 
-          type="text"
-          [(ngModel)]="scenario.name" 
-          class="form-control" 
-          placeholder="Name">
-      </div></div>
-    <div class="panel-body">
-      <div class="steps" [sortablejs]="scenario.steps" [sortablejsOptions]="sortableOptions">
-        <step *ngFor="let step of scenario.steps" [step]="step"></step>
+    <div class="panel panel-default panel-info">
+      <div class="panel-heading">
+        <div class="input-group">
+          <div class="input-group-addon">Scenario:&nbsp;</div>
+          <input 
+            type="text"
+            [(ngModel)]="scenario.name" 
+            class="form-control" 
+            placeholder="Name">
+        </div>
       </div>
-      <input auto-complete 
-        [(ngModel)]="newStep" 
-        [source]="stepLib" 
-        auto-complete-placeholder="Click here to add a new step"
-        placeholder="Click here to add a new step"
-        display-property-name="name"
-        (valueChanged)="addStep(newStep)"/>
+      <div class="panel-body">
+        <div class="steps" [sortablejs]="scenario.steps" [sortablejsOptions]="sortableOptions">
+          <step *ngFor="let step of scenario.steps" [step]="step"></step>
+        </div>
+        <input auto-complete 
+          [(ngModel)]="newStep" 
+          [source]="stepLib" 
+          auto-complete-placeholder="Click here to add a new step"
+          placeholder="Click here to add a new step"
+          display-property-name="name"
+          (valueChanged)="addStep(newStep)"/>
+      </div>
     </div>
   `
 })

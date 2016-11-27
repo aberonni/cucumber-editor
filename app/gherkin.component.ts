@@ -6,8 +6,16 @@ import { Scenario } from './scenario';
 @Component({
   selector: 'gherkin',
   template: `
+    <div class="input-group">
+      <div class="input-group-addon">Feature:&nbsp;</div>
+      <input 
+        type="text"
+        [(ngModel)]="gherkin.name" 
+        class="form-control" 
+        placeholder="Name">
+    </div>
     <div class="scenarios">
-      <scenario class="panel panel-default" *ngFor="let scenario of gherkin.scenarios" [scenario]="scenario"></scenario>
+      <scenario *ngFor="let scenario of gherkin.scenarios" [scenario]="scenario"></scenario>
       <button 
         class="btn btn-default center-block"
         (click)="onAdd()">
