@@ -4,21 +4,28 @@ const REGEXP_TESTER = /\(([^\)]+)\)/g;
 const REGEXP_DISPLAY_NAME = '(PARAMETER)';
 
 export class Step {
-  type: string;
-  name: string;
-  displayName: string;
-  parameters: StepParameter[];
+  public type: string;
+  public name: string;
+  public displayName: string;
+  public parameters: StepParameter[];
+
+  public constructor(name: string, type: string) {
+    this.type = type;
+    this.name = this.sanitizeName(name);
+    this.displayName = this.name.replace(REGEXP_TESTER, REGEXP_DISPLAY_NAME);
+    this.parameters = this.toChunks(this.name);
+  }
 
   private sanitizeName(str: string): string {
-    if(str[0] == '^') {
+    if (str[0] === '^') {
       str = str.substr(1);
     }
-    
-    if (str.charAt(str.length - 1) == '$') {
+
+    if (str.charAt(str.length - 1) === '$') {
       str = str.slice(0, -1);
     }
 
-    str = str.replace(/\(\?:([^\|]+)+\|+([^\)]+)?\)/, "$1")
+    str = str.replace(/\(\?:([^\|]+)+\|+([^\)]+)?\)/, '$1');
 
     return str;
   }
@@ -33,30 +40,23 @@ export class Step {
 
       if (insideRegexp) {
         value = REGEXP_DISPLAY_NAME;
-        regexp = str.substring(1, str.indexOf(")"));
-        str = str.substring(str.indexOf(")") + 1);
+        regexp = str.substring(1, str.indexOf(')'));
+        str = str.substring(str.indexOf(')') + 1);
         insideRegexp = false;
-      } else if(str.indexOf("(") >= 0) {
-        value = str.substr(0, str.indexOf("("));
-        str = str.substring(str.indexOf("("));
+      } else if (str.indexOf('(') >= 0) {
+        value = str.substr(0, str.indexOf('('));
+        str = str.substring(str.indexOf('('));
         insideRegexp = true;
       } else {
         value = str;
         str = '';
       }
 
-      if(value.length > 0) {
+      if (value.length > 0) {
         chunks.push({ value, regexp } as StepParameter);
       }
     }
 
     return chunks;
-  }
-
-  constructor(name: string, type: string) {
-    this.type = type;
-    this.name = this.sanitizeName(name);
-    this.displayName = this.name.replace(REGEXP_TESTER, REGEXP_DISPLAY_NAME);
-    this.parameters = this.toChunks(this.name);
   }
 }

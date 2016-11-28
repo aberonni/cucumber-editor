@@ -1,18 +1,18 @@
 import { Component, Input } from '@angular/core';
 
-import { Gherkin } from './gherkin';
 import { Scenario } from '../scenario/scenario';
+import { Gherkin } from './gherkin';
 
 @Component({
+  moduleId: module.id.replace('/dist/', '/'),
   selector: 'gherkin',
-  moduleId: module.id.replace("/dist/", "/"),
+  styleUrls: ['gherkin.component.css'],
   templateUrl: 'gherkin.component.html',
-  styleUrls: ['gherkin.component.css']
 })
 export class GherkinComponent {
-  @Input() gherkin: Gherkin;
+  @Input() public gherkin: Gherkin;
 
-  onAdd(): void {
+  public onAdd(): void {
     this.gherkin.scenarios.push(new Scenario());
   }
 }

@@ -1,4 +1,4 @@
 export class StepParameter {
-    value: string;
-    regexp: string;
+    public value: string;
+    public regexp: string;
 }

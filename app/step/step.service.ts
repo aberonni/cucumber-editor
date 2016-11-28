@@ -9,22 +9,23 @@ import { Step } from './step';
 export class StepService {
   private steps: Step[];
 
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
+  public constructor (private http: Http) {}
 
-  constructor (private http: Http) {}
+  public getSteps(): Promise<Step[]> {
+    if (this.steps != null) {
+      return Promise.resolve(this.steps);
+    }
 
-  getSteps(): Promise<Step[]> {
-    if(this.steps != null)
-      Promise.resolve(this.steps);
-
-    return this.http.get("steps")
+    return this.http.get('steps')
                .toPromise()
-               .then(response => {
+               .then((response) => {
                  return this.steps = response.json() as Step[];
                })
                .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
   }
 }

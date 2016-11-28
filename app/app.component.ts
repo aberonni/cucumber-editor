@@ -4,10 +4,10 @@ import { Gherkin } from './gherkin/gherkin';
 import { Scenario } from './scenario/scenario';
 
 @Component({
+  moduleId: module.id.replace('/dist/', '/'),
   selector: 'my-app',
-  moduleId: module.id.replace("/dist/", "/"),
+  styleUrls: ['app.component.css'],
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css']
 })
 export class AppComponent {
   private gherkin: Gherkin = this.defaultGherkin();
@@ -15,12 +15,12 @@ export class AppComponent {
   private defaultGherkin(): Gherkin {
     return {
       name: 'My gherkin',
-      scenarios: [new Scenario()]
+      scenarios: [new Scenario()],
     } as Gherkin;
   }
 
   private onReset(): void {
-    if(confirm('Are you sure?')) {
+    if (confirm('Are you sure?')) {
       this.gherkin = this.defaultGherkin();
     }
   }

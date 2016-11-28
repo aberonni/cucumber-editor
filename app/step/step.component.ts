@@ -6,8 +6,8 @@ import { Step } from './step';
   selector: 'step',
   template: `
     <mark>{{step.type}}</mark> <span *ngFor="let parameter of step.parameters">{{parameter.value}}</span>
-  `
+  `,
 })
 export class StepComponent {
-  @Input() step: Step;
+  @Input() public step: Step;
 }

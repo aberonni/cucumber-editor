@@ -1,7 +1,7 @@
 import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
 import { SortablejsModule } from 'angular-sortablejs';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
@@ -13,24 +13,24 @@ import { StepComponent } from './step/step.component';
 import { StepService } from './step/step.service';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    SortablejsModule,
-    HttpModule,
-    Ng2AutoCompleteModule
+  bootstrap: [
+    AppComponent,
   ],
   declarations: [
     AppComponent,
     GherkinComponent,
     ScenarioComponent,
-    StepComponent
+    StepComponent,
   ],
-  bootstrap: [ 
-    AppComponent 
+  imports: [
+    BrowserModule,
+    FormsModule,
+    SortablejsModule,
+    HttpModule,
+    Ng2AutoCompleteModule,
   ],
   providers: [
-    StepService
-  ]
+    StepService,
+  ],
 })
 export class AppModule { }
