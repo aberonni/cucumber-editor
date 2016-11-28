@@ -67,6 +67,8 @@ my-app {
 .ng2-auto-complete input {
     display: block;
     width: 100%;
+}
+.newStep .ng2-auto-complete input {
     border: none;
     outline: none;
     padding: 0 !important;
