@@ -7,34 +7,34 @@ import { Scenario } from './scenario';
 import { StepService } from '../step/step.service';
 
 @Component({
-  moduleId: module.id.replace('/dist/', '/'),
-  selector: 'scenario',
-  styleUrls: ['scenario.component.css'],
-  templateUrl: 'scenario.component.html',
+    moduleId: module.id.replace('/dist/', '/'),
+    selector: 'scenario',
+    styleUrls: ['scenario.component.css'],
+    templateUrl: 'scenario.component.html',
 })
 export class ScenarioComponent implements OnInit {
-  @Input() public scenario: Scenario;
+    @Input() public scenario: Scenario;
 
-  private stepLib: Step[];
-  private newStep: Step;
-  private sortableOptions: SortablejsOptions = {
-    animation: 150,
-    draggable: 'step',
-  };
+    private stepLib: Step[];
+    private newStep: Step;
+    private sortableOptions: SortablejsOptions = {
+        animation: 150,
+        draggable: 'step',
+    };
 
-  public constructor(private stepService: StepService) { }
+    public constructor(private stepService: StepService) { }
 
-  public ngOnInit(): void {
-    this.stepService.getSteps().then((steps) => this.stepLib = steps);
-  }
-
-  private addStep(step: Step): void {
-    if (!step) {
-      return;
+    public ngOnInit(): void {
+        this.stepService.getSteps().then((steps) => this.stepLib = steps);
     }
 
-    this.scenario.steps.push(new Step(step.name, step.type));
+    private addStep(step: Step): void {
+        if (!step) {
+            return;
+        }
 
-    this.newStep = new Step('', '');
-  }
+        this.scenario.steps.push(new Step(step.name, step.type));
+
+        this.newStep = new Step('', '');
+    }
 }

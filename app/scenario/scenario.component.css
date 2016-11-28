@@ -1,8 +1,8 @@
 .sortable-ghost {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 step {
-  display: block;
-  cursor: pointer;
-  margin-bottom: 6px;
+    display: block;
+    cursor: pointer;
+    margin-bottom: 6px;
 }

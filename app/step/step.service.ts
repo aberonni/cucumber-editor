@@ -7,25 +7,25 @@ import { Step } from './step';
 
 @Injectable()
 export class StepService {
-  private steps: Step[];
+    private steps: Step[];
 
-  public constructor (private http: Http) {}
+    public constructor (private http: Http) {}
 
-  public getSteps(): Promise<Step[]> {
-    if (this.steps != null) {
-      return Promise.resolve(this.steps);
+    public getSteps(): Promise<Step[]> {
+        if (this.steps != null) {
+            return Promise.resolve(this.steps);
+        }
+
+        return this.http.get('steps')
+                    .toPromise()
+                    .then((response) => {
+                        return this.steps = response.json() as Step[];
+                    })
+                    .catch(this.handleError);
     }
 
-    return this.http.get('steps')
-               .toPromise()
-               .then((response) => {
-                 return this.steps = response.json() as Step[];
-               })
-               .catch(this.handleError);
-  }
-
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
+    }
 }

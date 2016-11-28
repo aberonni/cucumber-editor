@@ -1,87 +1,87 @@
 my-app {
-  display: block;
+    display: block;
 }
 
 /* SPINNER */
 .sk-folding-cube {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top:50%;
-  left: 50%;
-  transform: rotateZ(45deg) translateX(-50%) translateY(-50%);
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: rotateZ(45deg) translateX(-50%) translateY(-50%);
 }
 .sk-folding-cube .sk-cube {
-  float: left;
-  width: 50%;
-  height: 50%;
-  position: relative;
-  transform: scale(1.1); 
+    float: left;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    transform: scale(1.1); 
 }
 .sk-folding-cube .sk-cube:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #333;
-  animation: sk-foldCubeAngle 2.4s infinite linear both;
-  transform-origin: 100% 100%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    animation: sk-foldCubeAngle 2.4s infinite linear both;
+    transform-origin: 100% 100%;
 }
 .sk-folding-cube .sk-cube2 {
-  transform: scale(1.1) rotateZ(90deg);
+    transform: scale(1.1) rotateZ(90deg);
 }
 .sk-folding-cube .sk-cube3 {
-  transform: scale(1.1) rotateZ(180deg);
+    transform: scale(1.1) rotateZ(180deg);
 }
 .sk-folding-cube .sk-cube4 {
-  transform: scale(1.1) rotateZ(270deg);
+    transform: scale(1.1) rotateZ(270deg);
 }
 .sk-folding-cube .sk-cube2:before {
-  animation-delay: 0.3s;
+    animation-delay: 0.3s;
 }
 .sk-folding-cube .sk-cube3:before {
-  animation-delay: 0.6s; 
+    animation-delay: 0.6s; 
 }
 .sk-folding-cube .sk-cube4:before {
-  animation-delay: 0.9s;
+    animation-delay: 0.9s;
 }
 @keyframes sk-foldCubeAngle {
-  0%, 10% {
-    transform: perspective(140px) rotateX(-180deg);
-    opacity: 0; 
-  } 25%, 75% {
-    transform: perspective(140px) rotateX(0deg);
-    opacity: 1; 
-  } 90%, 100% {
-    transform: perspective(140px) rotateY(180deg);
-    opacity: 0; 
-  }
+    0%, 10% {
+        transform: perspective(140px) rotateX(-180deg);
+        opacity: 0; 
+    } 25%, 75% {
+        transform: perspective(140px) rotateX(0deg);
+        opacity: 1; 
+    } 90%, 100% {
+        transform: perspective(140px) rotateY(180deg);
+        opacity: 0; 
+    }
 }
 
 /* AUTOCOMPLETE */
 .ng2-auto-complete {
-  display: block !important;
+     display: block !important;
 }
 .ng2-auto-complete input {
-  display: block;
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 0 !important;
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0 !important;
 }
 
 /* RESET INPUT GROUP */
 .input-group-addon {
-  padding: 0;
-  border: 0;
-  background: none;
+    padding: 0;
+    border: 0;
+    background: none;
 }
 .input-group .form-control {
-  z-index: initial;
-  padding: 1px 7px;
-  height: auto;
-  padding-left: 7px;
-  border-color: #ddd;
+    z-index: initial;
+    padding: 1px 7px;
+    height: auto;
+    padding-left: 7px;
+    border-color: #ddd;
 }

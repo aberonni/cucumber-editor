@@ -13,24 +13,24 @@ import { StepComponent } from './step/step.component';
 import { StepService } from './step/step.service';
 
 @NgModule({
-  bootstrap: [
-    AppComponent,
-  ],
-  declarations: [
-    AppComponent,
-    GherkinComponent,
-    ScenarioComponent,
-    StepComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    SortablejsModule,
-    HttpModule,
-    Ng2AutoCompleteModule,
-  ],
-  providers: [
-    StepService,
-  ],
+    bootstrap: [
+        AppComponent,
+    ],
+    declarations: [
+        AppComponent,
+        GherkinComponent,
+        ScenarioComponent,
+        StepComponent,
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        SortablejsModule,
+        HttpModule,
+        Ng2AutoCompleteModule,
+    ],
+    providers: [
+        StepService,
+    ],
 })
 export class AppModule { }
