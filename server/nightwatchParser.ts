@@ -1,6 +1,6 @@
 import { Step } from '../app/step/step';
 
-export class SpyParser {
+export class NightwatchParser {
     private steps: Step[];
 
     private When = this.addStep('When');
@@ -14,7 +14,18 @@ export class SpyParser {
     };
 
     public getComponents(file: string): Promise<String[]> {
-        let components = Object.keys(require(file)._components);
+        let components = require(file)._components;
+
+        switch (typeof(components)) {
+            case 'Array':
+                break;
+            case 'Object':
+                components = Object.keys(require(file)._components);
+                break;
+            default:
+                components = [];
+        }
+
         return Promise.resolve(components);
     };
 

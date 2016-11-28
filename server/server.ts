@@ -2,7 +2,7 @@
 
 import { Step } from '../app/step/step';
 import { Config } from './config';
-import { SpyParser } from './SpyParser';
+import { NightwatchParser } from './nightwatchParser';
 
 let path = require('path');
 let open = require('open');
@@ -10,7 +10,7 @@ let glob = require('glob');
 let express = require('express');
 
 let config = new Config();
-let spyParser = new SpyParser();
+let nightwatchParser = new NightwatchParser();
 
 let app = express();
 let rootPath = path.join(path.normalize(__dirname), '..', '..');
@@ -28,7 +28,7 @@ app.get('/steps', (req, res) => {
 
     let addSteps = (file: string): Promise<Step[]> => {
         return new Promise((res, rej) => {
-            spyParser.getSteps(file).then((steps) => {
+            nightwatchParser.getSteps(file).then((steps) => {
                 allSteps = allSteps.concat(steps);
                 res();
             });
@@ -49,8 +49,8 @@ app.get('/steps', (req, res) => {
 });
 
 app.get('/components', (req, res) => {
-    let file = path.join(process.cwd(), 'scripts\\libs\\components.js');
-    spyParser.getComponents(file).then((components) => {
+    let file = path.join(process.cwd(), config.componentsFile);
+    nightwatchParser.getComponents(file).then((components) => {
         res.json(components);
     });
 });
