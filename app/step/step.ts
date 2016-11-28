@@ -1,8 +1,15 @@
+import { StepParameter } from './step-parameter';
+
+const REGEXP_TESTER = /\(([^\)]+)\)/g;
+const REGEXP_DISPLAY_NAME = '(PARAMETER)';
+
 export class Step {
   type: string;
   name: string;
+  displayName: string;
+  parameters: StepParameter[];
 
-  private signatureToStepName(str: string): string {
+  private sanitizeName(str: string): string {
     if(str[0] == '^') {
       str = str.substr(1);
     }
@@ -13,13 +20,43 @@ export class Step {
 
     str = str.replace(/\(\?:([^\|]+)+\|+([^\)]+)?\)/, "$1")
 
-    str = str.replace(/\((.+)\)/, '<b>VAL</b>')
-
     return str;
   }
 
-  constructor(signature: RegExp, type: string) {
-    this.name = this.signatureToStepName(signature.source);
+  private toChunks(str: string): StepParameter[] {
+    let chunks = [];
+    let insideRegexp = false;
+
+    while (str.length > 0) {
+      let value;
+      let regexp;
+
+      if (insideRegexp) {
+        value = REGEXP_DISPLAY_NAME;
+        regexp = str.substring(1, str.indexOf(")"));
+        str = str.substring(str.indexOf(")") + 1);
+        insideRegexp = false;
+      } else if(str.indexOf("(") >= 0) {
+        value = str.substr(0, str.indexOf("("));
+        str = str.substring(str.indexOf("("));
+        insideRegexp = true;
+      } else {
+        value = str;
+        str = '';
+      }
+
+      if(value.length > 0) {
+        chunks.push({ value, regexp } as StepParameter);
+      }
+    }
+
+    return chunks;
+  }
+
+  constructor(name: string, type: string) {
     this.type = type;
+    this.name = this.sanitizeName(name);
+    this.displayName = this.name.replace(REGEXP_TESTER, REGEXP_DISPLAY_NAME);
+    this.parameters = this.toChunks(this.name);
   }
 }

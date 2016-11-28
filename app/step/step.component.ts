@@ -5,7 +5,7 @@ import { Step } from './step';
 @Component({
   selector: 'step',
   template: `
-    <mark>{{step.type}}</mark> <span [innerHTML]="step.name"></span>
+    <mark>{{step.type}}</mark> <span *ngFor="let parameter of step.parameters">{{parameter.value}}</span>
   `
 })
 export class StepComponent {

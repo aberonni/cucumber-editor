@@ -5,7 +5,7 @@ export class SpyParser {
 
     private addStep(type: string): Function{
         return (signature: RegExp, fn: Function) => {
-            this.steps.push(new Step(signature, type));
+            this.steps.push(new Step(signature.source, type));
         }
     };
 

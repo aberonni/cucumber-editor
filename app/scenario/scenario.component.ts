@@ -27,12 +27,9 @@ export class ScenarioComponent implements OnInit {
     if(!step)
       return;
 
-    this.scenario.steps.push({
-      name: step.name, 
-      type: step.type
-    } as Step);
+    this.scenario.steps.push(new Step(step.name, step.type));
 
-    this.newStep = {name: ''} as Step;
+    this.newStep = new Step('','');
   }
 
   constructor(private stepService: StepService) { }
