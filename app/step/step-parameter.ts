@@ -1,12 +1,15 @@
 const defaultValue: string =  '(PARAMETER)';
 
 export class StepParameter {
-    public regexp: string;
+    public editing: boolean = false;
+    public regexp: RegExp;
     private _value: string;
 
-    public constructor (value, regexp) {
+    public constructor (value: string, regexp: string) {
         this.value = value;
-        this.regexp = regexp;
+        if (regexp) {
+            this.regexp = new RegExp(regexp);
+        }
     }
 
     public get value(): string {
