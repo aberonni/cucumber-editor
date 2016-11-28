@@ -39,7 +39,6 @@ export class Step {
             let regexp;
 
             if (insideRegexp) {
-                value = REGEXP_DISPLAY_NAME;
                 regexp = str.substring(1, str.indexOf(')'));
                 str = str.substring(str.indexOf(')') + 1);
                 insideRegexp = false;
@@ -52,8 +51,8 @@ export class Step {
                 str = '';
             }
 
-            if (value.length > 0) {
-                chunks.push({ value, regexp } as StepParameter);
+            if ((value && value.length > 0) || regexp) {
+                chunks.push(new StepParameter(value, regexp));
             }
         }
 

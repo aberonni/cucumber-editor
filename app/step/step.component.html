@@ -1,5 +1,9 @@
 <mark>{{step.type}}</mark>
 <template ngFor let-parameter [ngForOf]="step.parameters" let-parameterNumber="index">
-    <span *ngIf="!parameter.regexp">{{parameter.value}}</span>
-    <kbd *ngIf="parameter.regexp" class="bg-danger text-muted">{{parameter.value}}</kbd>
+    <span 
+        *ngIf="!parameter.regexp">{{parameter.value}}</span>
+    <code 
+        *ngIf="parameter.regexp" 
+        [ngClass]="getParameterClasses(parameter)"
+        (click)="setParameter(parameter)">{{parameter.value}}</code>
 </template>

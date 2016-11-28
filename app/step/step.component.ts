@@ -1,6 +1,7 @@
 import { Component, Input} from '@angular/core';
 
 import { Step } from './step';
+import { StepParameter } from './step-parameter';
 
 @Component({
     moduleId: module.id.replace('/dist/', '/'),
@@ -10,4 +11,10 @@ import { Step } from './step';
 })
 export class StepComponent {
     @Input() public step: Step;
+
+    public getParameterClasses(parameter: StepParameter): string[] {
+        let classes = parameter.isSet ? ['text-success', 'bg-success'] : [];
+
+        return classes;
+    }
 }
