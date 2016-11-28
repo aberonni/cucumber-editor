@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"node dist/server/server.js\" ",
+    "test": "npm run tslint",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "tslint": "tslint app/**/*.ts server/**/*.ts"
