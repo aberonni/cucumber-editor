@@ -8,7 +8,7 @@
         ],
         "indent": [
             true,
-            "space"
+            "spaces"
         ],
         "member-access": [
             true, 
