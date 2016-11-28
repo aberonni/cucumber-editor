@@ -14,12 +14,12 @@ export class NightwatchParser {
     };
 
     public getComponents(file: string): Promise<String[]> {
-        let components = require(file)._components;
+        let components = require(file)._components || [];
 
-        switch (typeof(components)) {
-            case 'Array':
+        switch (components.constructor) {
+            case Array:
                 break;
-            case 'Object':
+            case Object:
                 components = Object.keys(require(file)._components);
                 break;
             default:
