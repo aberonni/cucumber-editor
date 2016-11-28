@@ -12,12 +12,21 @@
             {{parameter.value}}</code><!--
      --><div class="editParameterTooltip panel panel-default" [hidden]="!parameter.editing" >
             <div class="inner">
+                <input
+                    class="form-control input-sm" 
+                    auto-complete
+                    [(ngModel)]="parameter.value"
+                    [source]="componentLib"
+                    auto-complete-placeholder="{{parameter.value}}"
+                    placeholder="parameter.value"/>
+                    <!--
                 <input 
                     type="text"
                     [(ngModel)]="parameter.value" 
                     class="form-control input-sm"
                     [pattern]="parameter.regexp" 
                     placeholder="parameter.value"><br>
+                    -->
                 <a href="#" (click)="parameter.editing = false">Close</a>
             </div>
         </div>

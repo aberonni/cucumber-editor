@@ -8,6 +8,7 @@ import { Step } from './step';
 @Injectable()
 export class StepService {
     private steps: Step[];
+    private components: string[];
 
     public constructor (private http: Http) {}
 
@@ -20,6 +21,19 @@ export class StepService {
                     .toPromise()
                     .then((response) => {
                         return this.steps = response.json() as Step[];
+                    })
+                    .catch(this.handleError);
+    }
+
+    public getComponents(): Promise<string[]> {
+        if (this.components != null) {
+            return Promise.resolve(this.components);
+        }
+
+        return this.http.get('components')
+                    .toPromise()
+                    .then((response) => {
+                        return this.components = response.json() as string[];
                     })
                     .catch(this.handleError);
     }
