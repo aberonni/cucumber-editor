@@ -73,6 +73,13 @@ my-app {
     display: block;
     width: 100%;
 }
+.ng2-auto-complete .input-sm + ng2-auto-complete input {
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
 .newStep .ng2-auto-complete input ,
 input[type="text"].minimal{
     background: none;
