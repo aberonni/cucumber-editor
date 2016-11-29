@@ -11,7 +11,7 @@
     </div>
     <div class="panel-body">
         <div class="steps" [sortablejs]="scenario.steps" [sortablejsOptions]="sortableOptions">
-            <step *ngFor="let step of scenario.steps" [step]="step"></step>
+            <step *ngFor="let step of scenario.steps" [step]="step" [scenario]="scenario"></step>
         </div>
         <div class="newStep">
             <input 

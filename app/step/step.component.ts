@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { StepService } from './step.service';
+import { Scenario } from '../scenario/scenario';
 import { Step } from './step';
 import { StepParameter } from './step-parameter';
 
@@ -12,4 +13,5 @@ import { StepParameter } from './step-parameter';
 })
 export class StepComponent {
     @Input() public step: Step;
+    @Input() public scenario: Scenario;
 }

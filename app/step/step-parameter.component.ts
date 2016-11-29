@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { StepService } from './step.service';
+import { Scenario } from '../scenario/scenario';
 import { StepParameter } from './step-parameter';
 
 @Component({
@@ -11,6 +12,7 @@ import { StepParameter } from './step-parameter';
 })
 export class StepParameterComponent implements OnInit {
     @Input() public parameter: StepParameter;
+    @Input() public scenario: Scenario;
 
     public componentLib: string[];
     public showTooltip: boolean = false;
@@ -25,7 +27,10 @@ export class StepParameterComponent implements OnInit {
 
     public getClasses(): string[] {
         let classes = this.parameter.isSet ? ['text-success', 'bg-success'] : [];
-
         return classes;
+    }
+
+    public variables(): string[] {
+        return this.scenario.table.columns;
     }
 }
