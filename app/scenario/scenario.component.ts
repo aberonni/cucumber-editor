@@ -3,6 +3,7 @@ import { SortablejsOptions } from 'angular-sortablejs';
 
 import { Step } from '../step/step';
 import { Scenario } from './scenario';
+import { ScenarioTable } from './scenario-table';
 
 import { StepService } from '../step/step.service';
 
@@ -36,5 +37,13 @@ export class ScenarioComponent implements OnInit {
         this.scenario.steps.push(new Step(step.name, step.type));
 
         this.newStep = new Step('', '');
+    }
+
+    private addTable(): void {
+        var firstCol = prompt('Please insert the name of the first colum.')
+
+        if (firstCol) {
+            this.scenario.table = new ScenarioTable(firstCol);
+        }
     }
 }

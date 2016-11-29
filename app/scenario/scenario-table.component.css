@@ -1,0 +1,37 @@
+mark {
+    display: inline-block;
+    margin: 30px 0 0;
+}
+
+table {
+    font-size: 14px;
+    margin: 7px 0 0;
+}
+
+th, td {
+    vertical-align: middle !important;
+}
+
+.tableToolbar {
+    width: 1%;
+}
+
+.tableToolbar .btn-group,
+.tableToolbar .input-group { 
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.tableToolbar input {
+    width: 110px;
+}
+
+.tableToolbar .input-group-btn {
+    width: 40px;
+}
+
+.add-row:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

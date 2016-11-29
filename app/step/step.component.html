@@ -18,6 +18,7 @@
                     [(ngModel)]="parameter.value"
                     [source]="componentLib"
                     auto-complete-placeholder="{{parameter.value}}"
+                    (valueChanged)="parameter.editing = false"
                     placeholder="parameter.value"/>
                     <!--
                 <input 

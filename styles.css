@@ -2,6 +2,11 @@ my-app {
     display: block;
 }
 
+/* SORTABLE */
+.sortable-ghost {
+    opacity: 0.5;
+}
+
 /* SPINNER */
 .sk-folding-cube {
     width: 40px;
@@ -68,7 +73,9 @@ my-app {
     display: block;
     width: 100%;
 }
-.newStep .ng2-auto-complete input {
+.newStep .ng2-auto-complete input ,
+input[type="text"].minimal{
+    background: none;
     border: none;
     outline: none;
     padding: 0 !important;

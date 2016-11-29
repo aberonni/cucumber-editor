@@ -1,0 +1,47 @@
+<mark>Examples:</mark>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th *ngFor="let column of table.columns; let colIndex = index">
+                {{column}}
+            </th>
+            <th class="tableToolbar" align="right">
+                <form class="input-group" (submit)="table.addColumn(columnInput.value)">
+                    <input 
+                        #columnInput
+                        type="text"
+                        class="form-control"
+                        placeholder="New column"/>
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </form>
+            </th>
+        </tr>
+    </thead>
+    <tbody [sortablejs]="table.rows" [sortablejsOptions]="sortableOptions">
+        <tr *ngFor="let row of table.rows; let rowIndex = index" class="sortableRow">
+            <td *ngFor="let column of table.columns">
+                <input 
+                    type="text"
+                    class="minimal"
+                    [(ngModel)]="row[column]"/>
+            </td>
+            <td class="tableToolbar" align="right">
+                <div class="btn-group"> 
+                    <button type="button" class="btn btn-default sortableHandle">
+                        <span class="glyphicon glyphicon-move"></span>
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="table.rows.splice(rowIndex, 1)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td [attr.colspan]="table.columns.length + 1" (click)="table.addRow()" class="add-row text-muted">Add row</td>
+        </tr>
+    </tbody>
+</table>

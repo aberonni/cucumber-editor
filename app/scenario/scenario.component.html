@@ -16,6 +16,7 @@
         <div class="newStep">
             <input 
                 auto-complete 
+                class="minimal"
                 [(ngModel)]="newStep" 
                 [source]="stepLib" 
                 auto-complete-placeholder="Click here to add a new step"
@@ -23,5 +24,9 @@
                 display-property-name="displayName"
                 (valueChanged)="addStep(newStep)"/>
         </div>
+        <scenario-table *ngIf="scenario.table" [table]="scenario.table"></scenario-table>
+    </div>
+    <div class="panel-footer" *ngIf="!scenario.table">
+        <button class="btn btn-info btn-sm" (click)="addTable()">Add Table</button>
     </div>
 </div>
