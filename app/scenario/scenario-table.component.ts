@@ -15,6 +15,6 @@ export class ScenarioTableComponent {
     private sortableOptions: SortablejsOptions = {
         animation: 150,
         draggable: '.sortableRow',
-        handle: ".sortableHandle",
+        handle: '.sortableHandle',
     };
 }

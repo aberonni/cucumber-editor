@@ -8,20 +8,22 @@ export class ScenarioTable {
     public addColumn(col: string) {
         this.columns.push(col);
 
-        this.rows.forEach((row, index)=>{
+        this.rows.forEach((row, index) => {
             row[col] = PREFIX_ROW + (index + 1);
-        })
+        });
 
         if (this.columns.length === 1) {
             this.addRow();
         }
     }
-    
+
     public addRow() {
         let row = {};
+
         this.columns.forEach(col => {
             row[col] = PREFIX_ROW + (this.rows.length + 1);
-        })
+        });
+
         this.rows.push(row);
     }
 }

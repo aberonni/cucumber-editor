@@ -22,7 +22,7 @@ export class StepParameter {
 
     public get displayValue(): string {
         let val = this.value;
-        
+
         if (this.isVariable) {
             val = '<' + val + '>';
         }

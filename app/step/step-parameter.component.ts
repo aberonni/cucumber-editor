@@ -31,7 +31,7 @@ export class StepParameterComponent implements OnInit {
     }
 
     public getClasses(): string[] {
-        let classes = this.parameter.isSet ? ['text-success', 'bg-success'] : [];   
+        let classes = this.parameter.isSet ? ['text-success', 'bg-success'] : [];
         return classes;
     }
 
@@ -40,6 +40,6 @@ export class StepParameterComponent implements OnInit {
     }
 
     public showAutocomplete(): boolean {
-        return this.inputType == 0 || (this.scenario.table && this.inputType == 1);
+        return this.inputType === 0 || (this.scenario.table && this.inputType === 1);
     }
 }
