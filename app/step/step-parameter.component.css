@@ -1,0 +1,33 @@
+.parameterTooltip {
+    position: absolute;
+	z-index: 1070;
+	text-align: center;
+
+	margin-top: 3px;
+    left: 50%;
+	transform: translateX(-50%);
+}
+
+.parameterTooltip:before {
+    content: '';
+    position: absolute;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+    top: -5px;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 0 5px 5px;
+	border-bottom-color: lightgray;
+}
+
+.parameterTooltip .inner {
+	text-align: center;
+    padding: 12px;
+	min-width: 223px;
+}
+
+.parameterTooltip .nav-tabs {
+	margin-bottom: 20px;
+}

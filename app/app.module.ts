@@ -10,6 +10,7 @@ import { GherkinComponent } from './gherkin/gherkin.component';
 import { ScenarioComponent } from './scenario/scenario.component';
 import { ScenarioTableComponent } from './scenario/scenario-table.component';
 import { StepComponent } from './step/step.component';
+import { StepParameterComponent } from './step/step-parameter.component';
 
 import { StepService } from './step/step.service';
 
@@ -23,6 +24,7 @@ import { StepService } from './step/step.service';
         ScenarioComponent,
         ScenarioTableComponent,
         StepComponent,
+        StepParameterComponent,
     ],
     imports: [
         BrowserModule,

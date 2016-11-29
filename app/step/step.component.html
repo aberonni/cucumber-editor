@@ -4,32 +4,8 @@
         *ngIf="!parameter.regexp">
         {{parameter.value}}
     </span>
-    <span class="parameter"
-        *ngIf="parameter.regexp" >
-        <code
-            [ngClass]="getParameterClasses(parameter)"
-            (click)="parameter.editing = !parameter.editing">
-            {{parameter.value}}</code><!--
-     --><div class="editParameterTooltip panel panel-default" [hidden]="!parameter.editing" >
-            <div class="inner">
-                <input
-                    class="form-control input-sm" 
-                    auto-complete
-                    [(ngModel)]="parameter.value"
-                    [source]="componentLib"
-                    auto-complete-placeholder="{{parameter.value}}"
-                    (valueChanged)="parameter.editing = false"
-                    placeholder="parameter.value"/>
-                    <!--
-                <input 
-                    type="text"
-                    [(ngModel)]="parameter.value" 
-                    class="form-control input-sm"
-                    [pattern]="parameter.regexp" 
-                    placeholder="parameter.value"><br>
-                    -->
-                <a href="#" (click)="parameter.editing = false">Close</a>
-            </div>
-        </div>
-    </span>
+    <step-parameter
+        *ngIf="parameter.regexp"
+        [parameter]="parameter">
+    </step-parameter>
 </template>

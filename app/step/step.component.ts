@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { StepService } from './step.service';
 import { Step } from './step';
@@ -10,19 +10,6 @@ import { StepParameter } from './step-parameter';
     styleUrls: ['step.component.css'],
     templateUrl: 'step.component.html',
 })
-export class StepComponent implements OnInit {
-    public componentLib: string[];
+export class StepComponent {
     @Input() public step: Step;
-
-    public constructor(private stepService: StepService) { }
-
-    public ngOnInit(): void {
-        this.stepService.getComponents().then((components) => this.componentLib = components);
-    }
-
-    public getParameterClasses(parameter: StepParameter): string[] {
-        let classes = parameter.isSet ? ['text-success', 'bg-success'] : [];
-
-        return classes;
-    }
 }

@@ -1,7 +1,6 @@
 const defaultValue: string =  '(PARAMETER)';
 
 export class StepParameter {
-    public editing: boolean = false;
     public regexp: RegExp;
     private _value: string;
 

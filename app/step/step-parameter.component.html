@@ -1,0 +1,23 @@
+<code
+    [ngClass]="getClasses()"
+    (click)="showTooltip = !showTooltip">
+    {{parameter.value}}</code><!--
+--><div class="parameterTooltip panel panel-default" [hidden]="!showTooltip" >
+    <div class="inner">
+        <ul class="nav nav-tabs">
+            <li *ngFor="let type of inputTypes; let typeIndex = index" [ngClass]="inputType == typeIndex && 'active'">
+                <a href="#" (click)="inputType = typeIndex">{{type}}</a>
+            </li>
+        </ul>
+        <input
+            class="form-control input-sm" 
+            auto-complete
+            [(ngModel)]="parameter.value"
+            [source]="componentLib"
+            auto-complete-placeholder="{{parameter.value}}"
+            (valueChanged)="showTooltip = false"
+            placeholder="parameter.value"/>
+        <br>
+        <a href="#" (click)="showTooltip = false">Close</a>
+    </div>
+</div>
