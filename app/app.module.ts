@@ -7,6 +7,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 import { AppComponent }  from './app.component';
 import { GherkinComponent } from './gherkin/gherkin.component';
+import { TagsComponent } from './tags/tags.component';
 import { ScenarioComponent } from './scenario/scenario.component';
 import { ScenarioTableComponent } from './scenario/scenario-table.component';
 import { StepComponent } from './step/step.component';
@@ -21,6 +22,7 @@ import { StepService } from './step/step.service';
     declarations: [
         AppComponent,
         GherkinComponent,
+        TagsComponent,
         ScenarioComponent,
         ScenarioTableComponent,
         StepComponent,

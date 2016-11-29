@@ -5,11 +5,12 @@
             <input 
                 type="text"
                 [(ngModel)]="scenario.name" 
-                class="form-control" 
+                class="minimal" 
                 placeholder="Name">
         </div>
     </div>
     <div class="panel-body">
+        <tags [tags]="scenario.tags"></tags>
         <div class="steps" [sortablejs]="scenario.steps" [sortablejsOptions]="sortableOptions">
             <step *ngFor="let step of scenario.steps" [step]="step" [scenario]="scenario"></step>
         </div>

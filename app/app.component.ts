@@ -13,10 +13,7 @@ export class AppComponent {
     private gherkin: Gherkin = this.defaultGherkin();
 
     private defaultGherkin(): Gherkin {
-        return {
-            name: 'My gherkin',
-            scenarios: [new Scenario()],
-        } as Gherkin;
+        return new Gherkin();
     }
 
     private onReset(): void {

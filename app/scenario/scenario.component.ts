@@ -40,10 +40,6 @@ export class ScenarioComponent implements OnInit {
     }
 
     private addTable(): void {
-        var firstCol = prompt('Please insert the name of the first colum.')
-
-        if (firstCol) {
-            this.scenario.table = new ScenarioTable(firstCol);
-        }
+        this.scenario.table = new ScenarioTable();
     }
 }

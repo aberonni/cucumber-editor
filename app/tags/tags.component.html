@@ -1,0 +1,12 @@
+<ul>
+    <li *ngFor="let tag of tags">
+        @{{tag.value}}
+    </li>
+</ul>
+<form (submit)="addTag(tagInput)">
+    @<input 
+        #tagInput
+        type="text"
+        class="minimal"
+        placeholder="new-tag"/>
+</form>
