@@ -2,6 +2,7 @@ const defaultValue: string =  '(PARAMETER)';
 
 export class StepParameter {
     public regexp: RegExp;
+    public isVariable: boolean;
     private _value: string;
 
     public constructor (value: string, regexp: string) {
@@ -17,6 +18,16 @@ export class StepParameter {
 
     public set value(str: string) {
         this._value = str;
+    }
+
+    public get displayValue(): string {
+        let val = this.value;
+        
+        if (this.isVariable) {
+            val = '<' + val + '>';
+        }
+
+        return val;
     }
 
     public get isSet(): boolean {

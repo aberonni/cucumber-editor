@@ -1,22 +1,32 @@
 <code
     [ngClass]="getClasses()"
     (click)="showTooltip = !showTooltip">
-    {{parameter.value}}</code><!--
+    {{parameter.displayValue}}</code><!--
 --><div class="parameterTooltip panel panel-default" [hidden]="!showTooltip" >
     <div class="inner">
         <ul class="nav nav-tabs">
             <li *ngFor="let type of inputTypes; let typeIndex = index" [ngClass]="inputType == typeIndex && 'active'">
-                <a href="#" (click)="inputType = typeIndex">{{type}}</a>
+                <a href="#" (click)="setInputType(typeIndex)">{{type}}</a>
             </li>
         </ul>
-        <input
-            class="form-control input-sm" 
-            auto-complete
-            [(ngModel)]="parameter.value"
-            [source]="componentLib"
-            auto-complete-placeholder="{{parameter.value}}"
-            (valueChanged)="showTooltip = false"
-            placeholder="parameter.value"/>
+        <div>
+            <input
+                *ngIf="showAutocomplete()"
+                class="form-control input-sm" 
+                auto-complete
+                [(ngModel)]="parameter.value"
+                [source]="getParameters()"
+                auto-complete-placeholder="{{parameter.value}}"
+                placeholder="parameter.value"/>
+            <input
+                *ngIf="inputType === 2"
+                class="form-control input-sm" 
+                [(ngModel)]="parameter.value"
+                placeholder="parameter.value"/>
+            <p *ngIf="!scenario.table && inputType === 1">
+                In order to add a variable you must add a table first.
+            </p>
+        </div>
         <br>
         <a href="#" (click)="showTooltip = false">Close</a>
     </div>

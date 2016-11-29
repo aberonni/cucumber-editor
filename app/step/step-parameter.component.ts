@@ -16,7 +16,7 @@ export class StepParameterComponent implements OnInit {
 
     public componentLib: string[];
     public showTooltip: boolean = false;
-    public inputTypes: string[] = ['Component', 'Variable'];
+    public inputTypes: string[] = ['Component', 'Variable', 'Free'];
     public inputType: Number = 0;
 
     public constructor(private stepService: StepService) { }
@@ -25,12 +25,21 @@ export class StepParameterComponent implements OnInit {
         this.stepService.getComponents().then((components) => this.componentLib = components);
     }
 
+    public setInputType(type: Number) {
+        this.inputType = type;
+        this.parameter.isVariable = this.inputType === 1;
+    }
+
     public getClasses(): string[] {
-        let classes = this.parameter.isSet ? ['text-success', 'bg-success'] : [];
+        let classes = this.parameter.isSet ? ['text-success', 'bg-success'] : [];   
         return classes;
     }
 
-    public variables(): string[] {
-        return this.scenario.table.columns;
+    public getParameters(): string[] {
+        return this.inputType === 0 ? this.componentLib : this.scenario.table.columns;
+    }
+
+    public showAutocomplete(): boolean {
+        return this.inputType == 0 || (this.scenario.table && this.inputType == 1);
     }
 }
