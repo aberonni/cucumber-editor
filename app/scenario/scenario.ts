@@ -7,4 +7,8 @@ export class Scenario {
     public tags: Tag[] = [];
     public steps: Step[] = [];
     public table: ScenarioTable;
+
+    public get type (): string {
+        return this.table ? 'Scenario Outline' : 'Scenario';
+    }
 }
