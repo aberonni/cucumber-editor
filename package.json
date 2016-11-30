@@ -2,12 +2,23 @@
   "name": "nightwatch-cucumber-editor",
   "version": "1.0.0",
   "scripts": {
+    "prepublish": "npm run test && tsc",
     "start": "tsc && concurrently \"tsc -w\" \"node dist/server/server.js\" ",
     "test": "npm run tslint",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "tslint": "tslint app/**/*.ts server/**/*.ts"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aberonni/nightwatch-cucumber-editor.git"
+  },
+  "author": "Domenico Gemoli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aberonni/nightwatch-cucumber-editor/issues"
+  },
+  "homepage": "https://github.com/aberonni/nightwatch-cucumber-editor",
   "licenses": [
     {
       "type": "MIT",
