@@ -25,6 +25,7 @@ th, td {
 
 .tableToolbar input {
     width: 110px;
+    font-weight: 100;
 }
 
 .tableToolbar .input-group-btn {
