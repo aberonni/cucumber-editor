@@ -21,4 +21,8 @@ export class AppComponent {
             this.gherkin = this.defaultGherkin();
         }
     }
+
+    private onSave(): void {
+        console.log(this.gherkin.toString());
+    }
 }

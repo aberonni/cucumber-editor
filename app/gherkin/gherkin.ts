@@ -11,4 +11,14 @@ export class Gherkin {
         this.scenarios = [new Scenario()];
         this.tags = new Tags();
     }
+
+    public toString(): string {
+        let str = `${this.tags.toString()}`;
+
+        str += `Feature: ${this.name}\n\n`;
+
+        this.scenarios.forEach(scenario => str += scenario.toString('\t'));
+
+        return str;
+    }
 }

@@ -16,6 +16,18 @@ export class Step {
         this.parameters = this.toChunks(this.name);
     }
 
+    public toString(indent: string): string {
+        let str = `${indent}${this.type} `;
+
+        str += this.parameters.reduce((a, b) => {
+            return a + b.displayValue;
+        }, '');
+
+        str += '\n';
+
+        return str;
+    }
+
     private sanitizeName(str: string): string {
         if (str[0] === '^') {
             str = str.substr(1);

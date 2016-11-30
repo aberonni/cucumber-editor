@@ -11,4 +11,20 @@ export class Scenario {
     public get type (): string {
         return this.table ? 'Scenario Outline' : 'Scenario';
     }
+
+    public toString(indent: string): string {
+        let str = `${this.tags.toString(indent)}`;
+
+        str += `${indent}${this.type}: ${this.name}\n\n`;
+
+        this.steps.forEach(step => str += step.toString(indent + '\t'));
+
+        if (this.table) {
+            str += this.table.toString(indent + '\t');
+        }
+
+        str += '\n';
+
+        return str;
+    }
 }

@@ -4,4 +4,10 @@ export class Tags {
     public add(tag: string) {
         this.values.push(tag);
     }
+
+    public toString(indent: string = ''): string {
+        return this.values.reduce((a, b) => {
+            return a + indent + '@' + b + '\n';
+        }, '');
+    }
 }
