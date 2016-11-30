@@ -1,4 +1,4 @@
-# gherkin-editor
+# nightwatch-cucumber-editor
 
 [![Build Status](https://travis-ci.org/aberonni/nightwatch-cucumber-editor.svg?branch=master)](https://travis-ci.org/aberonni/nightwatch-cucumber-editor)
 
