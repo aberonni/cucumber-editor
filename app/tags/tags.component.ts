@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Tag } from './tag';
+import { Tags } from './tags';
 
 @Component({
     moduleId: module.id.replace('/dist/', '/'),
@@ -9,10 +9,10 @@ import { Tag } from './tag';
     templateUrl: 'tags.component.html',
 })
 export class TagsComponent {
-    @Input() public tags: Tag[];
+    @Input() public tags: Tags;
 
     public addTag(newTag) {
-        this.tags.push({value: newTag.value} as Tag);
+        this.tags.add(newTag.value);
         newTag.value = '';
     }
 }

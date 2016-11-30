@@ -1,6 +1,6 @@
 <ul>
-    <li *ngFor="let tag of tags">
-        @{{tag.value}}
+    <li *ngFor="let tag of tags.values">
+        @{{tag}}
     </li>
 </ul>
 <form (submit)="addTag(tagInput)">
