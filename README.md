@@ -1,5 +1,6 @@
 # nightwatch-cucumber-editor
 
+[![npm version](https://badge.fury.io/js/nightwatch-cucumber-editor.svg)](https://badge.fury.io/js/nightwatch-cucumber-editor)
 [![Build Status](https://travis-ci.org/aberonni/nightwatch-cucumber-editor.svg?branch=master)](https://travis-ci.org/aberonni/nightwatch-cucumber-editor)
 
 ## Installation
