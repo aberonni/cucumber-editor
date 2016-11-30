@@ -1,6 +1,6 @@
 {
   "name": "nightwatch-cucumber-editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "prepublish": "npm run test && tsc",
     "start": "tsc && concurrently \"tsc -w\" \"node dist/server/server.js\" ",
