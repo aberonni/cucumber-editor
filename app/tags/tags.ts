@@ -1,13 +1,17 @@
-export class Tags {
-    public values: string[] = [];
+class Tag {
+    public value: string;
+}
 
-    public add(tag: string) {
-        this.values.push(tag);
+export class Tags {
+    public values: Tag[] = [];
+
+    public add(value: string) {
+        this.values.push({value});
     }
 
     public toString(indent: string = ''): string {
         return this.values.reduce((a, b) => {
-            return a + indent + '@' + b + '\n';
+            return a + indent + '@' + b.value + '\n';
         }, '');
     }
 }

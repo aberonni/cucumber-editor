@@ -1,6 +1,9 @@
 <ul>
     <li *ngFor="let tag of tags.values">
-        @{{tag}}
+        @<input 
+            type="text"
+            class="minimal"
+            [(ngModel)]="tag.value"/>
     </li>
 </ul>
 <form (submit)="addTag(tagInput)">
