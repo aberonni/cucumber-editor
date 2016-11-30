@@ -6,7 +6,8 @@
     System.config({
         paths: {
         // paths serve as alias
-            'npm:': 'node_modules/'
+            'npm:': 'node_modules/',
+            'file-saver': 'node_modules/file-saver/'
         },
         // map tells the System loader where to look for things
         map: {
@@ -45,6 +46,10 @@
             },
             'ng2-auto-complete': { 
                 main: 'ng2-auto-complete.umd.js', 
+                defaultExtension: 'js' 
+            },
+            'file-saver': { 
+                main: 'FileSaver.min.js', 
                 defaultExtension: 'js' 
             }
         }
