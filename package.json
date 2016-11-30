@@ -1,5 +1,5 @@
 {
-  "name": "gherkin-editor",
+  "name": "nightwatch-cucumber-editor",
   "version": "1.0.0",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"node dist/server/server.js\" ",
@@ -46,6 +46,6 @@
     "typescript": "^2.0.3"
   },
   "bin": {
-    "gherkin-editor": "dist/server/server.js"
+    "nightwatch-cucumber-editor": "dist/server/server.js"
   }
 }
