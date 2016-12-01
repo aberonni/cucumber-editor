@@ -11,7 +11,7 @@ import { Tags } from './tags';
 export class TagsComponent {
     @Input() public tags: Tags;
 
-    public addTag(newTag) {
+    public addTag(newTag: HTMLInputElement) {
         this.tags.add(newTag.value);
         newTag.value = '';
     }

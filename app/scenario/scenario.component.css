@@ -7,3 +7,11 @@ step {
     cursor: pointer;
     margin-bottom: 6px;
 }
+
+.panel-footer form {
+    margin: 0;
+}
+
+.panel-footer button {
+    height: 34px;
+}

@@ -15,6 +15,7 @@ var step_parameter_1 = require('./step-parameter');
 var StepParameterComponent = (function () {
     function StepParameterComponent(stepService) {
         this.stepService = stepService;
+        this.componentLib = [];
         this.showTooltip = false;
         this.inputTypes = ['Component', 'Variable', 'Free'];
         this.inputType = 0;
@@ -35,7 +36,7 @@ var StepParameterComponent = (function () {
         return this.inputType === 0 ? this.componentLib : this.scenario.table.columns;
     };
     StepParameterComponent.prototype.showAutocomplete = function () {
-        return this.inputType === 0 || (this.scenario.table && this.inputType === 1);
+        return (this.componentLib.length > 0 && this.inputType === 0) || (this.scenario.table.isValid && this.inputType === 1);
     };
     __decorate([
         core_1.Input(), 

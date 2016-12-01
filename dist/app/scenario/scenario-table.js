@@ -7,13 +7,14 @@ var ScenarioTable = (function () {
         this.rows = [];
     }
     ScenarioTable.prototype.addColumn = function (col) {
-        this.columns.push(col);
+        this.columns.push(col.value);
         this.rows.forEach(function (row, index) {
-            row[col] = PREFIX_ROW + (index + 1);
+            row[col.value] = PREFIX_ROW + (index + 1);
         });
         if (this.columns.length === 1) {
             this.addRow();
         }
+        col.value = '';
     };
     ScenarioTable.prototype.addRow = function () {
         var _this = this;
@@ -37,6 +38,13 @@ var ScenarioTable = (function () {
         str += '\n';
         return str;
     };
+    Object.defineProperty(ScenarioTable.prototype, "isValid", {
+        get: function () {
+            return this.columns.length > 0;
+        },
+        enumerable: true,
+        configurable: true
+    });
     ScenarioTable.prototype.pad = function (val, col) {
         var maxLength = this.rows.reduce(function (a, row) {
             return Math.max(a, row[col].length);

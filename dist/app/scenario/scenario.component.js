@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var step_1 = require('../step/step');
 var scenario_1 = require('./scenario');
-var scenario_table_1 = require('./scenario-table');
 var step_service_1 = require('../step/step.service');
 var ScenarioComponent = (function () {
     function ScenarioComponent(stepService) {
@@ -31,9 +30,6 @@ var ScenarioComponent = (function () {
         }
         this.scenario.steps.push(new step_1.Step(step.name, step.type));
         this.newStep = new step_1.Step('', '');
-    };
-    ScenarioComponent.prototype.addTable = function () {
-        this.scenario.table = new scenario_table_1.ScenarioTable();
     };
     __decorate([
         core_1.Input(), 

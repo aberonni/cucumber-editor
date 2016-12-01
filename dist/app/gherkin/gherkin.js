@@ -3,7 +3,7 @@ var scenario_1 = require('../scenario/scenario');
 var tags_1 = require('../tags/tags');
 var Gherkin = (function () {
     function Gherkin() {
-        this.name = 'My gherkin';
+        this.name = '';
         this.scenarios = [new scenario_1.Scenario()];
         this.tags = new tags_1.Tags();
     }

@@ -2,28 +2,22 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th class="tableToolbar" align="left">
-                <form class="input-group" (submit)="table.addColumn(columnInput.value)">
-                    <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </div>
-                    <input 
-                        #columnInput
-                        type="text"
-                        class="form-control"
-                        placeholder="New column"/>
-                </form>
-            </th>
             <th *ngFor="let column of table.columns; let colIndex = index">
                 {{column}}
+            </th>
+            <th class="tableToolbar">
             </th>
         </tr>
     </thead>
     <tbody [sortablejs]="table.rows" [sortablejsOptions]="sortableOptions" *ngIf="table.columns.length > 0">
         <tr *ngFor="let row of table.rows; let rowIndex = index" class="sortableRow">
-            <td class="tableToolbar" align="left">
+            <td *ngFor="let column of table.columns">
+                <input 
+                    type="text"
+                    class="minimal"
+                    [(ngModel)]="row[column]"/>
+            </td>
+            <td class="tableToolbar" align="right">
                 <div class="btn-group"> 
                     <button type="button" class="btn btn-default sortableHandle">
                         <span class="glyphicon glyphicon-move"></span>
@@ -33,16 +27,18 @@
                     </button>
                 </div>
             </td>
-            <td *ngFor="let column of table.columns">
-                <input 
-                    type="text"
-                    class="minimal"
-                    [(ngModel)]="row[column]"/>
-            </td>
         </tr>
         <tr>
-            <td></td>
-            <td *ngIf="table.columns.length > 0" [attr.colspan]="table.columns.length" (click)="table.addRow()" class="add-row text-muted">Add row</td>
+            <td 
+                *ngIf="table.columns.length > 0" 
+                [attr.colspan]="table.columns.length + 1" 
+                (click)="table.addRow()" 
+                [ngClass]="{'add-row': true, 'success': hovering}"
+                (mouseenter) ="hovering = true"
+                (mouseleave) ="hovering = false"
+                align="center">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </td>
         </tr>
     </tbody>
 </table>

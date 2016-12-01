@@ -23,8 +23,11 @@
                 class="form-control input-sm" 
                 [(ngModel)]="parameter.value"
                 placeholder="parameter.value"/>
-            <p *ngIf="!scenario.table && inputType === 1">
-                In order to add a variable you must add a table first.
+            <p *ngIf="!showAutocomplete() && inputType === 0">
+                Components not found.
+            </p>
+            <p *ngIf="!showAutocomplete() && inputType === 1">
+                There are no variables in the current scenario.
             </p>
         </div>
         <br>

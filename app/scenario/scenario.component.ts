@@ -38,8 +38,4 @@ export class ScenarioComponent implements OnInit {
 
         this.newStep = new Step('', '');
     }
-
-    private addTable(): void {
-        this.scenario.table = new ScenarioTable();
-    }
 }

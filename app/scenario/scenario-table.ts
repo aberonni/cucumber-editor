@@ -5,16 +5,18 @@ export class ScenarioTable {
     public columns: string[] = [];
     public rows: Object[] = [];
 
-    public addColumn(col: string) {
-        this.columns.push(col);
+    public addColumn(col: HTMLInputElement) {
+        this.columns.push(col.value);
 
         this.rows.forEach((row, index) => {
-            row[col] = PREFIX_ROW + (index + 1);
+            row[col.value] = PREFIX_ROW + (index + 1);
         });
 
         if (this.columns.length === 1) {
             this.addRow();
         }
+
+        col.value = '';
     }
 
     public addRow() {
@@ -43,6 +45,10 @@ export class ScenarioTable {
         str += '\n';
 
         return str;
+    }
+
+    public get isValid(): boolean {
+        return this.columns.length > 0;
     }
 
     private pad(val, col) {

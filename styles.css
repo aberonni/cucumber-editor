@@ -95,10 +95,3 @@ input[type="text"].minimal{
     border: 0;
     background: none;
 }
-.input-group .form-control {
-    z-index: initial;
-    padding: 1px 7px;
-    height: auto;
-    padding-left: 7px;
-    border-color: #ddd;
-}

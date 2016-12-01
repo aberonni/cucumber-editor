@@ -6,10 +6,10 @@ export class Scenario {
     public name: string;
     public tags: Tags = new Tags();
     public steps: Step[] = [];
-    public table: ScenarioTable;
+    public table: ScenarioTable = new ScenarioTable();
 
     public get type (): string {
-        return this.table ? 'Scenario Outline' : 'Scenario';
+        return this.table.isValid ? 'Scenario Outline' : 'Scenario';
     }
 
     public toString(indent: string): string {
@@ -19,7 +19,7 @@ export class Scenario {
 
         this.steps.forEach(step => str += step.toString(indent + '\t'));
 
-        if (this.table) {
+        if (this.table.isValid) {
             str += this.table.toString(indent + '\t');
         }
 

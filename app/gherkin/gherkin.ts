@@ -7,7 +7,7 @@ export class Gherkin {
     public tags: Tags;
 
     public constructor() {
-        this.name = 'My gherkin';
+        this.name = '';
         this.scenarios = [new Scenario()];
         this.tags = new Tags();
     }
