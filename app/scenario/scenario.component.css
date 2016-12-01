@@ -2,6 +2,12 @@
     margin-top: 1em;
 }
 
+.steps,
+.newStep {
+    margin-left: 2em;
+}
+
+
 step {
     display: block;
     cursor: pointer;

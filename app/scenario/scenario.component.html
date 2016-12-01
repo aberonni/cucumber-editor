@@ -1,5 +1,6 @@
 <div class="panel panel-default">
-    <div class="panel-heading">
+    <div class="panel-body">
+        <tags [tags]="scenario.tags"></tags>
         <div class="input-group">
             <div class="input-group-addon keyword">{{scenario.type}}:&nbsp;</div>
             <input 
@@ -8,9 +9,6 @@
                 class="minimal" 
                 placeholder="Name">
         </div>
-    </div>
-    <div class="panel-body">
-        <tags [tags]="scenario.tags"></tags>
         <div class="steps" [sortablejs]="scenario.steps" [sortablejsOptions]="sortableOptions">
             <step *ngFor="let step of scenario.steps" [step]="step" [scenario]="scenario"></step>
         </div>
