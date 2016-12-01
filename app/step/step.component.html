@@ -1,4 +1,4 @@
-<mark>{{step.type}}</mark>
+<span class="keyword">{{step.type}}</span>
 <template ngFor let-parameter [ngForOf]="step.parameters" let-parameterNumber="index">
     <span 
         *ngIf="!parameter.regexp">

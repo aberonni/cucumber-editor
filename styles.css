@@ -95,3 +95,8 @@ input[type="text"].minimal{
     border: 0;
     background: none;
 }
+
+/* KEYWORDS */
+.keyword {
+    color: #c7254e !important;
+}
