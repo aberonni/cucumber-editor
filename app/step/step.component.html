@@ -1,12 +1,22 @@
-<span class="keyword">{{step.type}}</span>
-<template ngFor let-parameter [ngForOf]="step.parameters" let-parameterNumber="index">
-    <span 
-        *ngIf="!parameter.regexp">
-        {{parameter.value}}
-    </span>
-    <step-parameter
-        *ngIf="parameter.regexp"
-        [parameter]="parameter"
-        [scenario]="scenario">
-    </step-parameter>
-</template>
+<div (mouseover)="hovering = true" (mouseleave)="hovering = false">
+    <span class="keyword">{{step.type}}</span>
+    <template ngFor let-parameter [ngForOf]="step.parameters" let-parameterNumber="index">
+        <span 
+            *ngIf="!parameter.regexp">
+            {{parameter.value}}
+        </span>
+        <step-parameter
+            *ngIf="parameter.regexp"
+            [parameter]="parameter"
+            [scenario]="scenario">
+        </step-parameter>
+    </template>
+    <div class="step-buttons" *ngIf="hovering">
+        <button type="button" class="btn-sm btn-link stepDragHandle">
+            <span class="glyphicon glyphicon-move"></span>
+        </button>
+        <button type="button" class="btn-sm btn-link" (click)="scenario.removeStep(step)">
+            <span class="glyphicon glyphicon-trash text-danger"></span>
+        </button>
+    </div>
+</div>

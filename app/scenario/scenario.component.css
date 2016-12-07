@@ -10,7 +10,7 @@
 
 step {
     display: block;
-    cursor: pointer;
+    cursor: default;
     margin-bottom: 6px;
 }
 

@@ -27,4 +27,8 @@ export class Scenario {
 
         return str;
     }
+
+    public removeStep(step: Step): void {
+        this.steps.splice(this.steps.indexOf(step), 1);
+    }
 }

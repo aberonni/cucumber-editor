@@ -21,6 +21,7 @@ export class ScenarioComponent implements OnInit {
     private sortableOptions: SortablejsOptions = {
         animation: 150,
         draggable: 'step',
+        handle: '.stepDragHandle'
     };
 
     public constructor(private stepService: StepService) { }

@@ -24,6 +24,9 @@ var Scenario = (function () {
         str += '\n';
         return str;
     };
+    Scenario.prototype.removeStep = function (step) {
+        this.steps.splice(this.steps.indexOf(step), 1);
+    };
     return Scenario;
 }());
 exports.Scenario = Scenario;

@@ -18,6 +18,7 @@ var ScenarioComponent = (function () {
         this.sortableOptions = {
             animation: 150,
             draggable: 'step',
+            handle: '.stepDragHandle'
         };
     }
     ScenarioComponent.prototype.ngOnInit = function () {

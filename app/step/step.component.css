@@ -1,3 +1,20 @@
 step-parameter {
     position: relative;
 }
+
+.step-buttons {
+    display: inline-block;
+    /*margin-left: 12px;*/
+}
+
+.step-buttons button {
+    padding: 0;
+}
+
+.step-buttons button:hover {
+    opacity: 0.7;
+}
+
+.glyphicon-move {
+    color: #333;
+}
