@@ -13,8 +13,9 @@ var step_service_1 = require('./step.service');
 var scenario_1 = require('../scenario/scenario');
 var step_parameter_1 = require('./step-parameter');
 var StepParameterComponent = (function () {
-    function StepParameterComponent(stepService) {
+    function StepParameterComponent(stepService, _elementRef) {
         this.stepService = stepService;
+        this._elementRef = _elementRef;
         this.componentLib = [];
         this.showTooltip = false;
         this.inputTypes = ['Component', 'Variable', 'Free'];
@@ -38,6 +39,9 @@ var StepParameterComponent = (function () {
     StepParameterComponent.prototype.showAutocomplete = function () {
         return (this.componentLib.length > 0 && this.inputType === 0) || (this.scenario.table.isValid && this.inputType === 1);
     };
+    StepParameterComponent.prototype.onDocumentClick = function (targetElement) {
+        this.showTooltip = this.showTooltip && this._elementRef.nativeElement.contains(targetElement);
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', step_parameter_1.StepParameter)
@@ -46,6 +50,12 @@ var StepParameterComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', scenario_1.Scenario)
     ], StepParameterComponent.prototype, "scenario", void 0);
+    __decorate([
+        core_1.HostListener('document:click', ['$event.target']), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', [Object]), 
+        __metadata('design:returntype', void 0)
+    ], StepParameterComponent.prototype, "onDocumentClick", null);
     StepParameterComponent = __decorate([
         core_1.Component({
             moduleId: module.id.replace('/dist/', '/'),
@@ -53,7 +63,7 @@ var StepParameterComponent = (function () {
             styleUrls: ['step-parameter.component.css'],
             templateUrl: 'step-parameter.component.html',
         }), 
-        __metadata('design:paramtypes', [step_service_1.StepService])
+        __metadata('design:paramtypes', [step_service_1.StepService, core_1.ElementRef])
     ], StepParameterComponent);
     return StepParameterComponent;
 }());

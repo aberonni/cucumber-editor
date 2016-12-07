@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, HostListener, OnInit } from '@angular/core';
 
 import { StepService } from './step.service';
 import { Scenario } from '../scenario/scenario';
@@ -19,7 +19,7 @@ export class StepParameterComponent implements OnInit {
     public inputTypes: string[] = ['Component', 'Variable', 'Free'];
     public inputType: Number = 0;
 
-    public constructor(private stepService: StepService) { }
+    public constructor(private stepService: StepService, private _elementRef: ElementRef) { }
 
     public ngOnInit(): void {
         this.stepService.getComponents().then((components) => this.componentLib = components);
@@ -41,5 +41,10 @@ export class StepParameterComponent implements OnInit {
 
     public showAutocomplete(): boolean {
         return (this.componentLib.length > 0 && this.inputType === 0) || (this.scenario.table.isValid && this.inputType === 1);
+    }
+
+    @HostListener('document:click', ['$event.target'])
+    public onDocumentClick(targetElement) {
+        this.showTooltip = this.showTooltip && this._elementRef.nativeElement.contains(targetElement);
     }
 }
