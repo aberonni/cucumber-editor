@@ -18,6 +18,10 @@ step {
     margin: 0;
 }
 
+.panel-footer .input-group .form-control {
+    z-index: initial;
+}
+
 .panel-footer button {
     height: 34px;
 }
