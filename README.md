@@ -1,7 +1,7 @@
-# nightwatch-cucumber-editor
+# cucumber-editor
 
-[![npm version](https://badge.fury.io/js/nightwatch-cucumber-editor.svg)](https://badge.fury.io/js/nightwatch-cucumber-editor)
-[![Build Status](https://travis-ci.org/aberonni/nightwatch-cucumber-editor.svg?branch=master)](https://travis-ci.org/aberonni/nightwatch-cucumber-editor)
+[![npm version](https://badge.fury.io/js/cucumber-editor.svg)](https://badge.fury.io/js/cucumber-editor)
+[![Build Status](https://travis-ci.org/aberonni/cucumber-editor.svg?branch=master)](https://travis-ci.org/aberonni/cucumber-editor)
 
 ## Installation
 
@@ -14,17 +14,17 @@ This module is made for projects based on [nightwatch-cucumber](https://github.c
 Install this module globally
 
 ```bash
-npm install -g nightwatch-cucumber-editor
+npm install -g cucumber-editor
 ```
 
 ### Step 3 (optional)
 
-In your project root, add a json configuration file named `.gherkineditor.json`.
+In your project root, add a json configuration file named `.cucumbereditor`.
 If you do not add this file, or if you don't provide all variables, the defaults will be used. 
 
 ## Configuration
 
-These are the default configuration options that can be overwritten in your `.gherkineditor.json` file.
+These are the default configuration options that can be overwritten in your `.cucumbereditor` file.
 
 ```json
 {
@@ -60,7 +60,7 @@ module.exports{
 Once you have finished the setup and configuration you can `cd` into your project folder and launch:
 
 ```bash
-nightwatch-cucumber-editor
+cucumber-editor
 ```
 
 This will open a web page containing a simple user interface allowing you to create new .feature files.

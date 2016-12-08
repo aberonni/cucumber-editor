@@ -1,5 +1,5 @@
 {
-  "name": "nightwatch-cucumber-editor",
+  "name": "cucumber-editor",
   "version": "1.0.1",
   "scripts": {
     "build": "concurrently \"npm run build:app\" \"npm run build:server\"",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aberonni/nightwatch-cucumber-editor.git"
+    "url": "git+https://github.com/aberonni/cucumber-editor.git"
   },
   "author": "Domenico Gemoli",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aberonni/nightwatch-cucumber-editor/issues"
+    "url": "https://github.com/aberonni/cucumber-editor/issues"
   },
-  "homepage": "https://github.com/aberonni/nightwatch-cucumber-editor",
+  "homepage": "https://github.com/aberonni/cucumber-editor",
   "licenses": [
     {
       "type": "MIT",
@@ -68,6 +68,6 @@
     "webpack": "^1.13.0"
   },
   "bin": {
-    "nightwatch-cucumber-editor": "dist/server/server.js"
+    "cucumber-editor": "dist/server/server.js"
   }
 }

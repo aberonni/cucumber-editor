@@ -1,4 +1,5 @@
 "use strict";
+var fs = require('fs');
 var path = require('path');
 var Config = (function () {
     function Config() {
@@ -7,10 +8,10 @@ var Config = (function () {
         this.componentsFile = 'scripts/libs/components.js';
         var userOptions = {};
         try {
-            userOptions = require(path.join(process.cwd(), '.gherkineditor.json'));
+            userOptions = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.cucumbereditor'), 'utf8'));
         }
         catch (e) {
-            console.log('No .gherkin-editor.json file found, using defaults.');
+            console.log('No .cucumbereditor file found, using defaults.');
         }
         Object.keys(userOptions).forEach(function (opt) {
             if (_this[opt]) {

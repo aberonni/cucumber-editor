@@ -1,3 +1,4 @@
+let fs = require('fs');
 let path = require('path');
 
 export class Config {
@@ -8,9 +9,9 @@ export class Config {
         let userOptions = {};
 
         try {
-            userOptions = require(path.join(process.cwd(), '.gherkineditor.json'));
+            userOptions = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.cucumbereditor'), 'utf8'));
         } catch (e) {
-            console.log('No .gherkin-editor.json file found, using defaults.');
+            console.log('No .cucumbereditor file found, using defaults.');
         }
 
         Object.keys(userOptions).forEach((opt) => {
