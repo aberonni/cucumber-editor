@@ -28,7 +28,7 @@ These are the default configuration options that can be overwritten in your `.cu
 
 ```json
 {
-    "stepsFolder": "features/step_definitions",
+    "stepsFolder": "scripts/steps",
     "componentsFile": "scripts/libs/components.js"
 }
 ```

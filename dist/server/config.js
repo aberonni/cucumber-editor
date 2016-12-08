@@ -4,7 +4,7 @@ var path = require('path');
 var Config = (function () {
     function Config() {
         var _this = this;
-        this.stepsFolder = 'features/step_definitions';
+        this.stepsFolder = 'scripts/steps';
         this.componentsFile = 'scripts/libs/components.js';
         var userOptions = {};
         try {

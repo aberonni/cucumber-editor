@@ -2,7 +2,7 @@ let fs = require('fs');
 let path = require('path');
 
 export class Config {
-    public stepsFolder: string = 'features/step_definitions';
+    public stepsFolder: string = 'scripts/steps';
     public componentsFile: string = 'scripts/libs/components.js';
 
     public constructor() {
