@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { Step } from '../app/step/step';
+import { Step } from '../src/app/step/step';
 import { Config } from './config';
 import { NightwatchParser } from './nightwatchParser';
 
@@ -13,7 +13,7 @@ let config = new Config();
 let nightwatchParser = new NightwatchParser();
 
 let app = express();
-let rootPath = path.join(path.normalize(__dirname), '..', '..');
+let rootPath = path.join(path.normalize(__dirname), '..');
 let nodePort = '2009';
 
 app.use(express.static(rootPath));

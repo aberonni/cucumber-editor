@@ -13,14 +13,6 @@
             "sourceMaps": true,
             "outDir": "${workspaceRoot}/dist",
             "preLaunchTask": "build"
-        },
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "Collega a processo",
-            "port": 5858,
-            "outFiles": [],
-            "sourceMaps": true
         }
     ]
 }

@@ -1,4 +1,4 @@
-import { Step } from '../app/step/step';
+import { Step } from '../src/app/step/step';
 
 export class NightwatchParser {
     private steps: Step[];

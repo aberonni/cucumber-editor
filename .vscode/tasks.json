@@ -12,11 +12,7 @@
     "tasks": [
         { 
             "taskName": "build",
-            "args": ["run", "tsc"]
-        },
-        { 
-            "taskName": "watch",
-            "args": ["run", "tsc:w"]
+            "args": ["run", "build"]
         }
     ]
 }

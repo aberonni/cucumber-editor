@@ -1,5 +1,5 @@
 "use strict";
-var step_1 = require('../app/step/step');
+var step_1 = require('../src/app/step/step');
 var NightwatchParser = (function () {
     function NightwatchParser() {
         this.When = this.addStep('When');

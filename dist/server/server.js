@@ -9,7 +9,7 @@ var express = require('express');
 var config = new config_1.Config();
 var nightwatchParser = new nightwatchParser_1.NightwatchParser();
 var app = express();
-var rootPath = path.join(path.normalize(__dirname), '..', '..');
+var rootPath = path.join(path.normalize(__dirname), '..');
 var nodePort = '2009';
 app.use(express.static(rootPath));
 app.use('/node_modules', express.static(rootPath + '/node_modules'));
