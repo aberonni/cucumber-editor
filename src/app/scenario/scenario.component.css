@@ -12,6 +12,7 @@ step {
     display: block;
     cursor: default;
     margin-bottom: 6px;
+    line-height: 22px;
 }
 
 .panel-footer form {

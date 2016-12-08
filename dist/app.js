@@ -61550,7 +61550,7 @@
 /* 383 */
 /***/ function(module, exports) {
 
-	module.exports = ".steps {\r\n    margin-top: 1em;\r\n}\r\n\r\n.steps,\r\n.newStep {\r\n    margin-left: 2em;\r\n}\r\n\r\n\r\nstep {\r\n    display: block;\r\n    cursor: default;\r\n    margin-bottom: 6px;\r\n}\r\n\r\n.panel-footer form {\r\n    margin: 0;\r\n}\r\n\r\n.panel-footer .input-group .form-control {\r\n    z-index: initial;\r\n}\r\n\r\n.panel-footer button {\r\n    height: 34px;\r\n}"
+	module.exports = ".steps {\r\n    margin-top: 1em;\r\n}\r\n\r\n.steps,\r\n.newStep {\r\n    margin-left: 2em;\r\n}\r\n\r\n\r\nstep {\r\n    display: block;\r\n    cursor: default;\r\n    margin-bottom: 6px;\r\n    line-height: 22px;\r\n}\r\n\r\n.panel-footer form {\r\n    margin: 0;\r\n}\r\n\r\n.panel-footer .input-group .form-control {\r\n    z-index: initial;\r\n}\r\n\r\n.panel-footer button {\r\n    height: 34px;\r\n}"
 
 /***/ },
 /* 384 */
@@ -61658,7 +61658,7 @@
 /* 389 */
 /***/ function(module, exports) {
 
-	module.exports = "step-parameter {\r\n    position: relative;\r\n}\r\n\r\n.step-buttons {\r\n    display: inline-block;\r\n    /*margin-left: 12px;*/\r\n}\r\n\r\n.step-buttons button {\r\n    padding: 0;\r\n}\r\n\r\n.step-buttons button:hover {\r\n    opacity: 0.7;\r\n}\r\n\r\n.glyphicon-move {\r\n    color: #333;\r\n}"
+	module.exports = "step-parameter {\r\n    position: relative;\r\n}\r\n\r\n.step-buttons {\r\n    display: inline-block;\r\n}\r\n\r\n.step-buttons button {\r\n    padding: 0;\r\n}\r\n\r\n.step-buttons button:hover {\r\n    opacity: 0.7;\r\n}\r\n\r\n.glyphicon-move {\r\n    color: #333;\r\n}"
 
 /***/ },
 /* 390 */
