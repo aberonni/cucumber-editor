@@ -3,13 +3,37 @@
 [![npm version](https://badge.fury.io/js/cucumber-editor.svg)](https://badge.fury.io/js/cucumber-editor)
 [![Build Status](https://travis-ci.org/aberonni/cucumber-editor.svg?branch=master)](https://travis-ci.org/aberonni/cucumber-editor)
 
+Load your [cucumber-js](https://github.com/cucumber/cucumber-js) step definitions and write valid feature files.
+Also compatible with other projects based on cucumber (see [nightwatch-cucumber](https://github.com/mucsi96/nightwatch-cucumber)).
+
+## Requirements
+
+You need one or more step definition files in your project. 
+Find out more about [step definition files](https://github.com/cucumber/cucumber-js/blob/master/docs/support_files/step_definitions.md).
+
+This is a very simple example of a step definition file.
+
+```js
+// scripts/steps/steps.js
+
+module.exports = function () {
+    this.Given(/^I have already visited the site$/, function () {
+        // do things...
+    });
+  
+    this.Then(/^Then the response status is (.*)$/, function (status) {
+        // do things...
+    });
+
+    this.When(/^I view my profile$/, function () {
+        // do things...
+    });
+};
+```
+
+The regular expressions will be extracted and parsed so you can use them when creating new feature files.
+
 ## Installation
-
-### Step 1
-
-This module is made for projects based on [nightwatch-cucumber](https://github.com/mucsi96/nightwatch-cucumber) so first of all you will need a nightwatch-cucumber based project up and running.
-
-### Step 2
 
 Install this module globally
 
@@ -17,14 +41,21 @@ Install this module globally
 npm install -g cucumber-editor
 ```
 
-### Step 3 (optional)
+## Usage
 
-In your project root, add a json configuration file named `.cucumbereditor`.
-If you do not add this file, or if you don't provide all variables, the defaults will be used. 
+```bash
+cd project/root/folder
+cucumber-editor
+```
+
+This will open the cucumber editor.
+
+![Screenshot](docs/screenshot.png) 
 
 ## Configuration
 
-These are the default configuration options that can be overwritten in your `.cucumbereditor` file.
+In your project root folder you can add a json configuration file named `.cucumbereditor`.
+If you do not add this file, or if you don't provide all variables, these defaults will be used.
 
 ```json
 {
@@ -33,14 +64,14 @@ These are the default configuration options that can be overwritten in your `.cu
 }
 ```
 
-### stepsFolder
+#### stepsFolder
 
-This should be the folder where your step definitions are stored. The default value is the same default that is used in nightwatch-cucumber.
+The folder where your step definition files are stored.
 
-### componentsFile
+#### componentsFile (optional)
 
-Optionally you can add a list of components as a suggestion when step definitions are parameterized. 
-In order to do so you need to provide an object that exports a `_components` property that this module will read.
+A file that exports a list of components, used for autocomplete when step definitions are parameterized.
+This file should export an object that contains a `_components` property. 
 
 ```js
 // scripts/libs/components.js
@@ -55,26 +86,15 @@ module.exports{
 }
 ```
 
-## Usage
-
-Once you have finished the setup and configuration you can `cd` into your project folder and launch:
-
-```bash
-cucumber-editor
-```
-
-This will open a web page containing a simple user interface allowing you to create new .feature files.
-
-![Screenshot](docs/screenshot.png) 
-
 ## Help needed!
 
 If you have any improvements to make or if you have encountered any issues, please contribute or get in touch!
 
-### Local development
+#### Local development
+
 This project is setup to work with VS Code. 
-For debugging, add the following into your settings.json in VS Code so that it can work properly.
+For debugging, add the following into your settings.json in VS Code.
 
 ```json
-"gherkin.editor.debug.cwd": "C:\\Path\\To\\Nightwatch\\Project\\Folder"
+"cucumber.editor.debug.cwd": "C:\\Path\\To\\Nightwatch\\Project\\Folder"
 ```

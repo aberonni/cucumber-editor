@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Debug Program",
             "program": "${workspaceRoot}/dist/server/server.js",
-            "cwd": "${config.gherkin.editor.debug.cwd}",
+            "cwd": "${config.cucumber.editor.debug.cwd}",
             "sourceMaps": true,
             "outDir": "${workspaceRoot}/dist",
             "preLaunchTask": "build"
