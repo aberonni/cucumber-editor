@@ -3,6 +3,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
 
+const { CheckerPlugin } = require('awesome-typescript-loader');
+
 module.exports = {
   devtool: 'source-map',
   
@@ -51,6 +53,7 @@ module.exports = {
   },
 
   plugins: [
+    new CheckerPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
