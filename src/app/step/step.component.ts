@@ -3,7 +3,6 @@ import { Component, Input } from '@angular/core';
 import { StepService } from './step.service';
 import { Scenario } from '../scenario/scenario';
 import { Step } from './step';
-import { StepParameter } from './step-parameter';
 
 @Component({
     selector: 'step',

@@ -1,7 +1,7 @@
 import { StepParameter } from './step-parameter';
 
 const REGEXP_TESTER = /\(([^\)]+)\)/g;
-const REGEXP_DISPLAY_NAME = '(PARAMETER)';
+const REGEXP_DISPLAY_NAME = 'PARAMETER';
 
 export class Step {
     public type: string;
@@ -64,7 +64,7 @@ export class Step {
             }
 
             if ((value && value.length > 0) || regexp) {
-                chunks.push(new StepParameter(value, regexp));
+                chunks.push(new StepParameter(value, regexp, REGEXP_DISPLAY_NAME));
             }
         }
 

@@ -20,20 +20,18 @@ td input {
     width: 1%;
 }
 
-.tableToolbar .btn-group,
-.tableToolbar .input-group { 
+.tableToolbar .btn-group { 
     display: flex;
     justify-content: flex-start;
     margin: 0;
 }
 
-.tableToolbar input {
-    width: 110px;
-    font-weight: 100;
+.tableToolbar button {
+    line-height: 14px;
 }
 
-.tableToolbar .input-group-btn {
-    width: 40px;
+.add-row {
+    line-height: 14px;
 }
 
 .add-row:hover {

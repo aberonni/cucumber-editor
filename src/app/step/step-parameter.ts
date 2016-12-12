@@ -1,19 +1,19 @@
-const defaultValue: string =  '(PARAMETER)';
-
 export class StepParameter {
     public regexp: RegExp;
     public isVariable: boolean;
     private _value: string;
+    private _defaultValue: string;
 
-    public constructor (value: string, regexp: string) {
+    public constructor (value: string, regexp: string, defaultValue: string) {
         this.value = value;
+        this._defaultValue = defaultValue;
         if (regexp) {
             this.regexp = new RegExp(regexp);
         }
     }
 
     public get value(): string {
-        return this._value || defaultValue;
+        return this._value || this._defaultValue;
     }
 
     public set value(str: string) {
@@ -31,6 +31,6 @@ export class StepParameter {
     }
 
     public get isSet(): boolean {
-        return this.value !== defaultValue;
+        return this.value !== this._defaultValue;
     }
 }
