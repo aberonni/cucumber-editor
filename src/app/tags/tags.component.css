@@ -4,3 +4,11 @@ ul {
     padding: 0;
     color: #337ab7;
 }
+
+form {
+    display: flex;
+}
+
+input {
+    flex: 1 1 auto;
+}

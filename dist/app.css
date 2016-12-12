@@ -96,6 +96,10 @@ input[type="text"].minimal{
     background: none;
 }
 
+.input-group input {
+    width: 100%;
+}
+
 /* KEYWORDS */
 .keyword {
     color: #c7254e !important;

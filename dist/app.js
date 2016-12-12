@@ -246,7 +246,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
-	 * @license Angular v2.2.3
+	 * @license Angular v2.2.4
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
@@ -414,7 +414,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * @license Angular v2.2.3
+	 * @license Angular v2.2.4
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
@@ -14883,7 +14883,7 @@
 	              return normalizedDirMeta;
 	          };
 	          if (nonNormalizedMetadata.isComponent) {
-	              var templateMeta = this._directiveNormalizer.normalizeTemplate({
+	              var templateMeta_1 = this._directiveNormalizer.normalizeTemplate({
 	                  componentType: directiveType,
 	                  moduleUrl: nonNormalizedMetadata.type.moduleUrl,
 	                  encapsulation: nonNormalizedMetadata.template.encapsulation,
@@ -14894,15 +14894,15 @@
 	                  animations: nonNormalizedMetadata.template.animations,
 	                  interpolation: nonNormalizedMetadata.template.interpolation
 	              });
-	              if (templateMeta.syncResult) {
-	                  createDirectiveMetadata(templateMeta.syncResult);
+	              if (templateMeta_1.syncResult) {
+	                  createDirectiveMetadata(templateMeta_1.syncResult);
 	                  return null;
 	              }
 	              else {
 	                  if (isSync) {
 	                      throw new ComponentStillLoadingError(directiveType);
 	                  }
-	                  return templateMeta.asyncResult.then(createDirectiveMetadata);
+	                  return function () { return templateMeta_1.asyncResult.then(createDirectiveMetadata); };
 	              }
 	          }
 	          else {
@@ -15124,7 +15124,10 @@
 	                      transitiveModule.directives.push(declaredIdentifier);
 	                      declaredDirectives.push(declaredIdentifier);
 	                      _this._addTypeToModule(declaredType, moduleType);
-	                      transitiveModule.directiveLoaders.push(function () { return _this._loadDirectiveMetadata(declaredType, isSync); });
+	                      var loader = _this._loadDirectiveMetadata(declaredType, isSync);
+	                      if (loader) {
+	                          transitiveModule.directiveLoaders.push(loader);
+	                      }
 	                  }
 	                  else if (_this._pipeResolver.isPipe(declaredType)) {
 	                      transitiveModule.pipesSet.add(declaredType);
@@ -18871,7 +18874,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
-	 * @license Angular v2.2.3
+	 * @license Angular v2.2.4
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
@@ -18947,6 +18950,7 @@
 	        return o !== null && (typeof o === 'function' || typeof o === 'object');
 	    }
 	    function print(obj) {
+	        // tslint:disable-next-line:no-console
 	        console.log(obj);
 	    }
 	    function warn(obj) {
@@ -29655,7 +29659,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
-	 * @license Angular v2.2.3
+	 * @license Angular v2.2.4
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
@@ -30169,6 +30173,7 @@
 	        };
 	        BrowserDomAdapter.prototype.log = function (error) {
 	            if (window.console) {
+	                // tslint:disable-next-line:no-console
 	                window.console.log && window.console.log(error);
 	            }
 	        };
@@ -32124,6 +32129,7 @@
 	        function AngularProfiler(ref) {
 	            this.appRef = ref.injector.get(_angular_core.ApplicationRef);
 	        }
+	        // tslint:disable:no-console
 	        /**
 	         * Exercises change detection in a loop and then prints the average amount of
 	         * time in milliseconds how long a single round of change detection takes for
@@ -32293,7 +32299,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
-	 * @license Angular v2.2.3
+	 * @license Angular v2.2.4
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
@@ -34331,7 +34337,7 @@
 	     * {@example common/pipes/ts/async_pipe.ts region='AsyncPipePromise'}
 	     *
 	     * It's also possible to use `async` with Observables. The example below binds the `time` Observable
-	     * to the view. The Observable continuesly updates the view with the current time.
+	     * to the view. The Observable continuously updates the view with the current time.
 	     *
 	     * {@example common/pipes/ts/async_pipe.ts region='AsyncPipeObservable'}
 	     *
@@ -34441,6 +34447,7 @@
 	    }());
 	    var DATE_FORMATS_SPLIT = /((?:[^yMLdHhmsazZEwGjJ']+)|(?:'(?:[^']|'')*')|(?:E+|y+|M+|L+|d+|H+|h+|J+|j+|m+|s+|a|z|Z|G+|w+))(.*)/;
 	    var PATTERN_ALIASES = {
+	        // Keys are quoted so they do not get renamed during closure compilation.
 	        'yMMMdjms': datePartGetterFactory(combine([
 	            digitCondition('year', 1),
 	            nameCondition('month', 3),
@@ -34464,46 +34471,47 @@
 	        'jm': datePartGetterFactory(combine([digitCondition('hour', 1), digitCondition('minute', 1)]))
 	    };
 	    var DATE_FORMATS = {
-	        yyyy: datePartGetterFactory(digitCondition('year', 4)),
-	        yy: datePartGetterFactory(digitCondition('year', 2)),
-	        y: datePartGetterFactory(digitCondition('year', 1)),
-	        MMMM: datePartGetterFactory(nameCondition('month', 4)),
-	        MMM: datePartGetterFactory(nameCondition('month', 3)),
-	        MM: datePartGetterFactory(digitCondition('month', 2)),
-	        M: datePartGetterFactory(digitCondition('month', 1)),
-	        LLLL: datePartGetterFactory(nameCondition('month', 4)),
-	        L: datePartGetterFactory(nameCondition('month', 1)),
-	        dd: datePartGetterFactory(digitCondition('day', 2)),
-	        d: datePartGetterFactory(digitCondition('day', 1)),
-	        HH: digitModifier(hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 2), false)))),
-	        H: hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), false))),
-	        hh: digitModifier(hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 2), true)))),
-	        h: hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), true))),
-	        jj: datePartGetterFactory(digitCondition('hour', 2)),
-	        j: datePartGetterFactory(digitCondition('hour', 1)),
-	        mm: digitModifier(datePartGetterFactory(digitCondition('minute', 2))),
-	        m: datePartGetterFactory(digitCondition('minute', 1)),
-	        ss: digitModifier(datePartGetterFactory(digitCondition('second', 2))),
-	        s: datePartGetterFactory(digitCondition('second', 1)),
+	        // Keys are quoted so they do not get renamed.
+	        'yyyy': datePartGetterFactory(digitCondition('year', 4)),
+	        'yy': datePartGetterFactory(digitCondition('year', 2)),
+	        'y': datePartGetterFactory(digitCondition('year', 1)),
+	        'MMMM': datePartGetterFactory(nameCondition('month', 4)),
+	        'MMM': datePartGetterFactory(nameCondition('month', 3)),
+	        'MM': datePartGetterFactory(digitCondition('month', 2)),
+	        'M': datePartGetterFactory(digitCondition('month', 1)),
+	        'LLLL': datePartGetterFactory(nameCondition('month', 4)),
+	        'L': datePartGetterFactory(nameCondition('month', 1)),
+	        'dd': datePartGetterFactory(digitCondition('day', 2)),
+	        'd': datePartGetterFactory(digitCondition('day', 1)),
+	        'HH': digitModifier(hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 2), false)))),
+	        'H': hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), false))),
+	        'hh': digitModifier(hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 2), true)))),
+	        'h': hourExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), true))),
+	        'jj': datePartGetterFactory(digitCondition('hour', 2)),
+	        'j': datePartGetterFactory(digitCondition('hour', 1)),
+	        'mm': digitModifier(datePartGetterFactory(digitCondition('minute', 2))),
+	        'm': datePartGetterFactory(digitCondition('minute', 1)),
+	        'ss': digitModifier(datePartGetterFactory(digitCondition('second', 2))),
+	        's': datePartGetterFactory(digitCondition('second', 1)),
 	        // while ISO 8601 requires fractions to be prefixed with `.` or `,`
 	        // we can be just safely rely on using `sss` since we currently don't support single or two digit
 	        // fractions
-	        sss: datePartGetterFactory(digitCondition('second', 3)),
-	        EEEE: datePartGetterFactory(nameCondition('weekday', 4)),
-	        EEE: datePartGetterFactory(nameCondition('weekday', 3)),
-	        EE: datePartGetterFactory(nameCondition('weekday', 2)),
-	        E: datePartGetterFactory(nameCondition('weekday', 1)),
-	        a: hourClockExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), true))),
-	        Z: timeZoneGetter('short'),
-	        z: timeZoneGetter('long'),
-	        ww: datePartGetterFactory({}),
+	        'sss': datePartGetterFactory(digitCondition('second', 3)),
+	        'EEEE': datePartGetterFactory(nameCondition('weekday', 4)),
+	        'EEE': datePartGetterFactory(nameCondition('weekday', 3)),
+	        'EE': datePartGetterFactory(nameCondition('weekday', 2)),
+	        'E': datePartGetterFactory(nameCondition('weekday', 1)),
+	        'a': hourClockExtractor(datePartGetterFactory(hour12Modify(digitCondition('hour', 1), true))),
+	        'Z': timeZoneGetter('short'),
+	        'z': timeZoneGetter('long'),
+	        'ww': datePartGetterFactory({}),
 	        // first Thursday of the year. not support ?
-	        w: datePartGetterFactory({}),
+	        'w': datePartGetterFactory({}),
 	        // of the year not support ?
-	        G: datePartGetterFactory(nameCondition('era', 1)),
-	        GG: datePartGetterFactory(nameCondition('era', 2)),
-	        GGG: datePartGetterFactory(nameCondition('era', 3)),
-	        GGGG: datePartGetterFactory(nameCondition('era', 4))
+	        'G': datePartGetterFactory(nameCondition('era', 1)),
+	        'GG': datePartGetterFactory(nameCondition('era', 2)),
+	        'GGG': datePartGetterFactory(nameCondition('era', 3)),
+	        'GGGG': datePartGetterFactory(nameCondition('era', 4))
 	    };
 	    function digitModifier(inner) {
 	        return function (date, locale) {
@@ -35275,7 +35283,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * @license Angular v2.2.3
+	 * @license Angular v2.2.4
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
@@ -39917,7 +39925,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * @license Angular v2.2.3
+	 * @license Angular v2.2.4
 	 * (c) 2010-2016 Google, Inc. https://angular.io/
 	 * License: MIT
 	 */
@@ -40914,7 +40922,7 @@
 	                        // responseText is the old-school way of retrieving response (supported by IE8 & 9)
 	                        // response/responseType properties were introduced in ResourceLoader Level2 spec
 	                        // (supported by IE10)
-	                        body = _xhr.response == null ? _xhr.responseText : _xhr.response;
+	                        body = (typeof _xhr.response === 'undefined') ? _xhr.responseText : _xhr.response;
 	                        // Implicitly strip a potential XSSI prefix.
 	                        if (typeof body === 'string') {
 	                            body = body.replace(XSSI_PREFIX, '');
@@ -41766,12 +41774,22 @@
 	// this is enough to have a single `global` event
 	var onremove;
 	var SortablejsDirective = (function () {
-	    function SortablejsDirective(element) {
+	    function SortablejsDirective(element, zone) {
 	        this.element = element;
+	        this.zone = zone;
+	        this.runInsideAngular = false;
 	    }
 	    SortablejsDirective.prototype.ngOnInit = function () {
+	        var _this = this;
 	        // onChange???
-	        this._sortable = new Sortable(this.element.nativeElement, this.options);
+	        if (this.runInsideAngular) {
+	            this._sortable = new Sortable(this.element.nativeElement, this.options);
+	        }
+	        else {
+	            this.zone.runOutsideAngular(function () {
+	                _this._sortable = new Sortable(_this.element.nativeElement, _this.options);
+	            });
+	        }
 	    };
 	    SortablejsDirective.prototype.ngOnDestroy = function () {
 	        this._sortable.destroy();
@@ -41843,11 +41861,15 @@
 	        core_1.Input('sortablejsOptions'), 
 	        __metadata('design:type', Object)
 	    ], SortablejsDirective.prototype, "_options", void 0);
+	    __decorate([
+	        core_1.Input(), 
+	        __metadata('design:type', Boolean)
+	    ], SortablejsDirective.prototype, "runInsideAngular", void 0);
 	    SortablejsDirective = __decorate([
 	        core_1.Directive({
 	            selector: '[sortablejs]'
 	        }), 
-	        __metadata('design:paramtypes', [core_1.ElementRef])
+	        __metadata('design:paramtypes', [core_1.ElementRef, core_1.NgZone])
 	    ], SortablejsDirective);
 	    return SortablejsDirective;
 	}());
@@ -43115,14 +43137,14 @@
 
 	(function webpackUniversalModuleDefinition(root, factory) {
 		if(true)
-			module.exports = factory(__webpack_require__(4), __webpack_require__(25), __webpack_require__(23), __webpack_require__(29), __webpack_require__(34), __webpack_require__(5));
+			module.exports = factory(__webpack_require__(4), __webpack_require__(25), __webpack_require__(23), __webpack_require__(29), __webpack_require__(34));
 		else if(typeof define === 'function' && define.amd)
-			define(["@angular/core", "@angular/forms", "@angular/common", "@angular/http", "rxjs/Rx", "rxjs/Subject"], factory);
+			define(["@angular/core", "@angular/forms", "@angular/common", "@angular/http", "rxjs/Rx"], factory);
 		else if(typeof exports === 'object')
-			exports["ng2-auto-complete"] = factory(require("@angular/core"), require("@angular/forms"), require("@angular/common"), require("@angular/http"), require("rxjs/Rx"), require("rxjs/Subject"));
+			exports["ng2-auto-complete"] = factory(require("@angular/core"), require("@angular/forms"), require("@angular/common"), require("@angular/http"), require("rxjs/Rx"));
 		else
-			root["ng2-auto-complete"] = factory(root["@angular/core"], root["@angular/forms"], root["@angular/common"], root["@angular/http"], root["rxjs/Rx"], root["rxjs/Subject"]);
-	})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_8__) {
+			root["ng2-auto-complete"] = factory(root["@angular/core"], root["@angular/forms"], root["@angular/common"], root["@angular/http"], root["rxjs/Rx"]);
+	})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_5__, __WEBPACK_EXTERNAL_MODULE_6__) {
 	return /******/ (function(modules) { // webpackBootstrap
 	/******/ 	// The module cache
 	/******/ 	var installedModules = {};
@@ -43186,7 +43208,7 @@
 		exports.Ng2AutoComplete = ng2_auto_complete_1.Ng2AutoComplete;
 		var ng2_auto_complete_component_1 = __webpack_require__(7);
 		exports.Ng2AutoCompleteComponent = ng2_auto_complete_component_1.Ng2AutoCompleteComponent;
-		var ng2_auto_complete_directive_1 = __webpack_require__(9);
+		var ng2_auto_complete_directive_1 = __webpack_require__(8);
 		exports.Ng2AutoCompleteDirective = ng2_auto_complete_directive_1.Ng2AutoCompleteDirective;
 		var Ng2AutoCompleteModule = (function () {
 		    function Ng2AutoCompleteModule() {
@@ -43256,33 +43278,15 @@
 		    };
 		    /**
 		     * return remote data from the given source and options, and data path
-		     *
-		     * @param {*} options is an object containing the query paramters for the GET call
-		     * @returns {Observable<Response>}
-		     *
-		     * @memberOf AutoComplete
 		     */
-		    Ng2AutoComplete.prototype.getRemoteData = function (options) {
+		    Ng2AutoComplete.prototype.getRemoteData = function (keyword) {
 		        var _this = this;
-		        var keyValues = [];
-		        var url = "";
-		        for (var key in options) {
-		            if (options.hasOwnProperty(key)) {
-		                // replace all keyword to value
-		                var regexp = new RegExp(":" + key, "g");
-		                url = this.source;
-		                if (url.match(regexp)) {
-		                    url = url.replace(regexp, options[key]);
-		                }
-		                else {
-		                    keyValues.push(key + "=" + options[key]);
-		                }
-		            }
+		        if (typeof this.source !== 'string') {
+		            throw "Invalid type of source, must be a string. e.g. http://www.google.com?q=:my_keyword";
 		        }
-		        if (keyValues.length) {
-		            var qs = keyValues.join("&");
-		            url += url.match(/\?[a-z]/i) ? qs : ("?" + qs);
-		        }
+		        var matches = this.source.match(/:[a-zA-Z_]+/);
+		        var replacementWord = matches[0];
+		        var url = this.source.replace(replacementWord, keyword);
 		        return this.http.get(url)
 		            .map(function (resp) { return resp.json(); })
 		            .map(function (resp) {
@@ -43331,7 +43335,6 @@
 		    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 		};
 		var core_1 = __webpack_require__(1);
-		var Subject_1 = __webpack_require__(8);
 		var ng2_auto_complete_1 = __webpack_require__(4);
 		/**
 		 * show a selected date in monthly calendar
@@ -43348,12 +43351,14 @@
 		        this.minChars = 0;
 		        this.valuePropertyName = "id";
 		        this.displayPropertyName = "value";
+		        this.loadingText = "Loading";
+		        this.valueSelected = new core_1.EventEmitter();
+		        this.inputChanged = new core_1.EventEmitter();
 		        this.closeToBottom = false;
 		        this.dropdownVisible = false;
 		        this.isLoading = false;
 		        this.filteredList = [];
 		        this.itemIndex = 0;
-		        this.valueSelected = new Subject_1.Subject();
 		        this.delay = (function () {
 		            var timer = 0;
 		            return function (callback, ms) {
@@ -43380,15 +43385,18 @@
 		        var delayMs = this.isSrcArr() ? 10 : 500;
 		        // executing after user stopped typing
 		        this.delay(function () { return _this.reloadList(); }, delayMs);
+		        this.inputChanged.emit(this.inputEl.value);
 		    };
 		    Ng2AutoCompleteComponent.prototype.showDropdownList = function () {
-		        this.keyword = "";
+		        this.keyword = this.userInputEl.value;
+		        this.inputEl.style.display = '';
 		        this.inputEl.focus();
 		        this.userInputElTabIndex = this.userInputEl['tabIndex'];
 		        this.userInputEl['tabIndex'] = -100; //disable tab focus for <shift-tab> pressed
 		        this.reloadList();
 		    };
 		    Ng2AutoCompleteComponent.prototype.hideDropdownList = function () {
+		        this.inputEl.style.display = 'none';
 		        this.dropdownVisible = false;
 		        this.userInputEl['tabIndex'] = this.userInputElTabIndex; // enable tab focus
 		    };
@@ -43397,12 +43405,17 @@
 		        var keyword = this.inputEl.value;
 		        this.dropdownVisible = true;
 		        if (this.isSrcArr()) {
-		            // local source 
-		            this.filteredList = this.autoComplete.filter(this.source, this.keyword);
+		            // local source
+		            if (keyword.length >= (this.minChars || 0)) {
+		                this.filteredList = this.autoComplete.filter(this.source, this.keyword);
+		                if (this.maxNumList) {
+		                    this.filteredList = this.filteredList.slice(0, this.maxNumList);
+		                }
+		            }
 		        }
 		        else {
 		            this.isLoading = true;
-		            if (keyword.length >= this.minChars) {
+		            if (keyword.length >= (this.minChars || 0)) {
 		                if (typeof this.source === "function") {
 		                    // custom function that returns observable 
 		                    this.source(keyword).subscribe(function (resp) {
@@ -43411,15 +43424,20 @@
 		                            paths.forEach(function (prop) { return resp = resp[prop]; });
 		                        }
 		                        _this.filteredList = resp;
+		                        if (_this.maxNumList) {
+		                            _this.filteredList = _this.filteredList.slice(0, _this.maxNumList);
+		                        }
 		                    }, function (error) { return null; }, function () { return _this.isLoading = false; } // complete
 		                    );
 		                }
 		                else {
-		                    // remote source  
-		                    var query = { keyword: keyword };
-		                    this.autoComplete.getRemoteData(query)
+		                    // remote source
+		                    this.autoComplete.getRemoteData(keyword)
 		                        .subscribe(function (resp) {
 		                        _this.filteredList = resp;
+		                        if (_this.maxNumList) {
+		                            _this.filteredList = _this.filteredList.slice(0, _this.maxNumList);
+		                        }
 		                    }, function (error) { return null; }, function () { return _this.isLoading = false; } // complete
 		                    );
 		                }
@@ -43428,7 +43446,7 @@
 		    };
 		    Ng2AutoCompleteComponent.prototype.selectOne = function (data) {
 		        this.hideDropdownList();
-		        this.valueSelected.next(data);
+		        this.valueSelected.emit(data);
 		    };
 		    ;
 		    Ng2AutoCompleteComponent.prototype.inputElKeyHandler = function (evt) {
@@ -43495,10 +43513,30 @@
 		        core_1.Input("blank-option-text"), 
 		        __metadata('design:type', String)
 		    ], Ng2AutoCompleteComponent.prototype, "blankOptionText", void 0);
+		    __decorate([
+		        core_1.Input("accept-user-input"), 
+		        __metadata('design:type', Boolean)
+		    ], Ng2AutoCompleteComponent.prototype, "acceptUserInput", void 0);
+		    __decorate([
+		        core_1.Input("loading-text"), 
+		        __metadata('design:type', String)
+		    ], Ng2AutoCompleteComponent.prototype, "loadingText", void 0);
+		    __decorate([
+		        core_1.Input("max-num-list"), 
+		        __metadata('design:type', Number)
+		    ], Ng2AutoCompleteComponent.prototype, "maxNumList", void 0);
+		    __decorate([
+		        core_1.Output(), 
+		        __metadata('design:type', Object)
+		    ], Ng2AutoCompleteComponent.prototype, "valueSelected", void 0);
+		    __decorate([
+		        core_1.Output(), 
+		        __metadata('design:type', Object)
+		    ], Ng2AutoCompleteComponent.prototype, "inputChanged", void 0);
 		    Ng2AutoCompleteComponent = __decorate([
 		        core_1.Component({
 		            selector: "ng2-auto-complete",
-		            template: "\n  <div class=\"ng2-auto-complete\">\n\n    <!-- keyword input -->\n    <input class=\"keyword\"\n           placeholder=\"{{placeholder}}\"\n           (focus)=\"showDropdownList()\"\n           (blur)=\"hideDropdownList()\"\n           (keydown)=\"inputElKeyHandler($event)\"\n           (input)=\"reloadListInDelay()\"\n           [(ngModel)]=\"keyword\" />\n\n    <!-- dropdown that user can select -->\n    <ul *ngIf=\"dropdownVisible\"\n        [style.bottom]=\"inputEl.style.height\"\n        [style.position]=\"closeToBottom ? 'absolute': ''\">\n      <li *ngIf=\"isLoading\" class=\"loading\">Loading</li>\n      <li *ngIf=\"blankOptionText\"\n          (mousedown)=\"selectOne('')\"\n          class=\"blank-item\">{{blankOptionText}}</li>\n      <li class=\"item\"\n          *ngFor=\"let item of filteredList; let i=index\"\n          (mousedown)=\"selectOne(item)\"\n          [ngClass]=\"{selected: i === itemIndex}\"\n          [innerHtml]=\"getFormattedList(item)\">\n      </li>\n    </ul>\n\n  </div>",
+		            template: "\n  <div class=\"ng2-auto-complete\">\n\n    <!-- keyword input -->\n    <input class=\"keyword\"\n           placeholder=\"{{placeholder}}\"\n           (focus)=\"showDropdownList()\"\n           (blur)=\"hideDropdownList()\"\n           (keydown)=\"inputElKeyHandler($event)\"\n           (input)=\"reloadListInDelay()\"\n           [(ngModel)]=\"keyword\" />\n\n    <!-- dropdown that user can select -->\n    <ul *ngIf=\"dropdownVisible\"\n        [style.bottom]=\"inputEl.style.height\"\n        [style.position]=\"closeToBottom ? 'absolute': ''\">\n      <li *ngIf=\"isLoading\" class=\"loading\">{{loadingText}}</li>\n      <li *ngIf=\"blankOptionText\"\n          (mousedown)=\"selectOne('')\"\n          class=\"blank-item\">{{blankOptionText}}</li>\n      <li class=\"item\"\n          *ngFor=\"let item of filteredList; let i=index\"\n          (mousedown)=\"selectOne(item)\"\n          [ngClass]=\"{selected: i === itemIndex}\"\n          [innerHtml]=\"getFormattedList(item)\">\n      </li>\n    </ul>\n\n  </div>",
 		            providers: [ng2_auto_complete_1.Ng2AutoComplete],
 		            styles: ["\n  @keyframes slideDown {\n    0% {\n      transform:  translateY(-10px);\n    }\n    100% {\n      transform: translateY(0px);\n    }\n  }\n  .ng2-auto-complete ng2-auto-complete {\n    background-color: transparent;\n  }\n  .ng2-auto-complete ng2-auto-complete input {\n    outline: none;\n    border: 0px;\n    padding: 2px; \n    box-sizing: border-box;\n    background-clip: content-box;\n  }\n\n  .ng2-auto-complete ng2-auto-complete ul {\n    background-color: #fff;\n    margin: 0;\n    width : 100%;\n    overflow-y: auto;\n    list-style-type: none;\n    padding: 0;\n    border: 1px solid #ccc;\n    box-sizing: border-box;\n    animation: slideDown 0.1s;\n  }\n\n  .ng2-auto-complete ng2-auto-complete ul li {\n    padding: 2px 5px;\n    border-bottom: 1px solid #eee;\n  }\n\n  .ng2-auto-complete ng2-auto-complete ul li.selected {\n    background-color: #ccc;\n  }\n\n  .ng2-auto-complete ng2-auto-complete ul li:last-child {\n    border-bottom: none;\n  }\n\n  .ng2-auto-complete ng2-auto-complete ul li:hover {\n    background-color: #ccc;\n  }"
 		            ],
@@ -43513,12 +43551,6 @@
 	
 	/***/ },
 	/* 8 */
-	/***/ function(module, exports) {
-	
-		module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
-	
-	/***/ },
-	/* 9 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		"use strict";
@@ -43542,6 +43574,7 @@
 		        var _this = this;
 		        this.resolver = resolver;
 		        this.viewContainerRef = viewContainerRef;
+		        this.loadingText = "Loading";
 		        this.ngModelChange = new core_1.EventEmitter();
 		        this.valueChanged = new core_1.EventEmitter();
 		        this.hideAutoCompleteDropdown = function (event) {
@@ -43577,6 +43610,13 @@
 		                    !!(thisInputElBCR.bottom + 100 > window.innerHeight);
 		            }
 		        };
+		        this.componentInputChanged = function (val) {
+		            if (_this.acceptUserInput !== false) {
+		                _this.inputEl.value = val;
+		                (val !== _this.ngModel) && _this.ngModelChange.emit(val);
+		                _this.valueChanged.emit(val);
+		            }
+		        };
 		        this.selectNewValue = function (val) {
 		            if (val !== '') {
 		                val = _this.addToStringFunction(val);
@@ -43604,6 +43644,7 @@
 		    Ng2AutoCompleteDirective.prototype.ngOnDestroy = function () {
 		        if (this.componentRef) {
 		            this.componentRef.instance.valueSelected.unsubscribe();
+		            this.componentRef.instance.inputChanged.unsubscribe();
 		        }
 		        document.removeEventListener("click", this.hideAutoCompleteDropdown);
 		    };
@@ -43627,7 +43668,11 @@
 		        component.source = this.source;
 		        component.placeholder = this.autoCompletePlaceholder;
 		        component.blankOptionText = this.blankOptionText;
+		        component.acceptUserInput = this.acceptUserInput;
+		        component.loadingText = this.loadingText;
+		        component.maxNumList = parseInt(this.maxNumList, 10);
 		        component.valueSelected.subscribe(this.selectNewValue);
+		        component.inputChanged.subscribe(this.componentInputChanged);
 		        this.acDropdownEl = this.componentRef.location.nativeElement;
 		        this.acDropdownEl.style.display = "none";
 		        // if this element is not an input tag, move dropdown after input tag
@@ -43690,6 +43735,18 @@
 		        core_1.Input("blank-option-text"), 
 		        __metadata('design:type', String)
 		    ], Ng2AutoCompleteDirective.prototype, "blankOptionText", void 0);
+		    __decorate([
+		        core_1.Input("accept-user-input"), 
+		        __metadata('design:type', Boolean)
+		    ], Ng2AutoCompleteDirective.prototype, "acceptUserInput", void 0);
+		    __decorate([
+		        core_1.Input("loading-text"), 
+		        __metadata('design:type', String)
+		    ], Ng2AutoCompleteDirective.prototype, "loadingText", void 0);
+		    __decorate([
+		        core_1.Input("max-num-list"), 
+		        __metadata('design:type', String)
+		    ], Ng2AutoCompleteDirective.prototype, "maxNumList", void 0);
 		    __decorate([
 		        core_1.Input(), 
 		        __metadata('design:type', String)
@@ -61313,7 +61370,7 @@
 /* 377 */
 /***/ function(module, exports) {
 
-	module.exports = "ul {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    color: #337ab7;\r\n}"
+	module.exports = "ul {\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    color: #337ab7;\r\n}\r\n\r\nform {\r\n    display: flex;\r\n}\r\n\r\ninput {\r\n    flex: 1 1 auto;\r\n}"
 
 /***/ },
 /* 378 */
@@ -61604,7 +61661,7 @@
 /* 386 */
 /***/ function(module, exports) {
 
-	module.exports = ".title {\r\n    display: inline-block;\r\n    margin: 30px 0 0;\r\n}\r\n\r\ntable {\r\n    font-size: 14px;\r\n    margin: 7px 0 0;\r\n}\r\n\r\nth, td {\r\n    vertical-align: middle !important;\r\n}\r\n\r\n.tableToolbar {\r\n    width: 1%;\r\n}\r\n\r\n.tableToolbar .btn-group,\r\n.tableToolbar .input-group { \r\n    display: flex;\r\n    justify-content: flex-start;\r\n    margin: 0;\r\n}\r\n\r\n.tableToolbar input {\r\n    width: 110px;\r\n    font-weight: 100;\r\n}\r\n\r\n.tableToolbar .input-group-btn {\r\n    width: 40px;\r\n}\r\n\r\n.add-row:hover {\r\n    cursor: pointer;\r\n}"
+	module.exports = ".title {\r\n    display: inline-block;\r\n    margin: 30px 0 0;\r\n}\r\n\r\ntable {\r\n    font-size: 14px;\r\n    margin: 7px 0 0;\r\n}\r\n\r\nth, td {\r\n    vertical-align: middle !important;\r\n}\r\n\r\ntd input {\r\n    width: 100%;\r\n}\r\n\r\n.tableToolbar {\r\n    width: 1%;\r\n}\r\n\r\n.tableToolbar .btn-group,\r\n.tableToolbar .input-group { \r\n    display: flex;\r\n    justify-content: flex-start;\r\n    margin: 0;\r\n}\r\n\r\n.tableToolbar input {\r\n    width: 110px;\r\n    font-weight: 100;\r\n}\r\n\r\n.tableToolbar .input-group-btn {\r\n    width: 40px;\r\n}\r\n\r\n.add-row:hover {\r\n    cursor: pointer;\r\n}"
 
 /***/ },
 /* 387 */
