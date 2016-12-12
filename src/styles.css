@@ -109,6 +109,11 @@ input[type="text"].minimal{
     outline: none;
 }
 
+.form-control:focus {
+    border-color: #bbb;
+    box-shadow: none;
+}
+
 /* KEYWORDS */
 .keyword {
     color: #c7254e !important;
