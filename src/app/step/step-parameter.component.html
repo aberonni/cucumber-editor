@@ -14,10 +14,11 @@
                 *ngIf="showAutocomplete()"
                 class="form-control input-sm" 
                 auto-complete
-                [(ngModel)]="parameter.value"
+                [(ngModel)]="autocompleteModel"
                 [source]="getParameters()"
+                (valueChanged)="setParameter($event)"
                 auto-complete-placeholder="{{parameter.value}}"
-                placeholder="parameter.value"/>
+                placeholder="{{parameter.value}}"/>
             <input
                 *ngIf="inputType === 2"
                 class="form-control input-sm" 

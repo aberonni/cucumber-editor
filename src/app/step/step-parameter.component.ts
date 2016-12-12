@@ -17,6 +17,7 @@ export class StepParameterComponent implements OnInit {
     public showTooltip: boolean = false;
     public inputTypes: string[] = ['Component', 'Variable', 'Free'];
     public inputType: Number = 0;
+    public autocompleteModel: string = '';
 
     public constructor(private stepService: StepService, private _elementRef: ElementRef) { }
 
@@ -25,8 +26,13 @@ export class StepParameterComponent implements OnInit {
     }
 
     public setInputType(type: Number) {
+        if (this.inputType === type) {
+            return;
+        }
+
         this.inputType = type;
-        this.parameter.isVariable = this.inputType === 1;
+        this.parameter.value = null;
+        this.autocompleteModel = '';
     }
 
     public getClasses(): string[] {
@@ -45,5 +51,10 @@ export class StepParameterComponent implements OnInit {
     @HostListener('document:click', ['$event.target'])
     public onDocumentClick(targetElement) {
         this.showTooltip = this.showTooltip && this._elementRef.nativeElement.contains(targetElement);
+    }
+
+    private setParameter(val: string): void {
+        this.parameter.value = val;
+        this.parameter.isVariable = this.inputType === 1;
     }
 }
