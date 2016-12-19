@@ -1,6 +1,6 @@
 export class StepParameter {
     public regexp: RegExp;
-    public isVariable: boolean;
+    private _variable: boolean;
     private _value: string;
     private _defaultValue: string;
 
@@ -20,10 +20,18 @@ export class StepParameter {
         this._value = str;
     }
 
+    public get variable(): boolean {
+        return this._variable || false;
+    }
+
+    public set variable(isVar: boolean) {
+        this._variable = isVar;
+    }
+
     public get displayValue(): string {
         let val = this.value;
 
-        if (this.isVariable) {
+        if (this.variable) {
             val = '<' + val + '>';
         }
 

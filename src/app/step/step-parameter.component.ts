@@ -15,8 +15,7 @@ export class StepParameterComponent implements OnInit {
 
     public componentLib: string[] = [];
     public showTooltip: boolean = false;
-    public inputTypes: string[] = ['Component', 'Variable', 'Free'];
-    public inputType: Number = 0;
+    public acceptUserInput: boolean = false;
     public autocompleteModel: string = '';
 
     public constructor(private stepService: StepService, private _elementRef: ElementRef) { }
@@ -25,27 +24,19 @@ export class StepParameterComponent implements OnInit {
         this.stepService.getComponents().then((components) => this.componentLib = components);
     }
 
-    public setInputType(type: Number) {
-        if (this.inputType === type) {
+    public setIsVariable(isVariable: boolean) {
+        if (this.parameter.variable === isVariable) {
             return;
         }
 
-        this.inputType = type;
-        this.parameter.value = null;
+        this.parameter.variable = isVariable;
         this.autocompleteModel = '';
-    }
 
-    public getClasses(): string[] {
-        let classes = this.parameter.isSet ? ['text-success', 'bg-success'] : [];
-        return classes;
-    }
-
-    public getParameters(): string[] {
-        return this.inputType === 0 ? this.componentLib : this.scenario.table.columns;
-    }
-
-    public showAutocomplete(): boolean {
-        return (this.componentLib.length > 0 && this.inputType === 0) || (this.scenario.table.isValid && this.inputType === 1);
+        if (isVariable && this.scenario.table.isValid) {
+            this.parameter.value = this.scenario.table.columns[0];
+        } else {
+            this.parameter.value = null;
+        }
     }
 
     @HostListener('document:click', ['$event.target'])
@@ -55,6 +46,5 @@ export class StepParameterComponent implements OnInit {
 
     private setParameter(val: string): void {
         this.parameter.value = val;
-        this.parameter.isVariable = this.inputType === 1;
     }
 }

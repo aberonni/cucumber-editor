@@ -1,37 +1,43 @@
 <code
-    [ngClass]="getClasses()"
+    [ngClass]="parameter.isSet && ['text-success', 'bg-success']"
     (click)="showTooltip = !showTooltip">
     {{parameter.displayValue}}</code><!--
 --><div class="parameterTooltip panel panel-default" [hidden]="!showTooltip" >
     <div class="inner">
         <ul class="nav nav-tabs">
-            <li *ngFor="let type of inputTypes; let typeIndex = index" [ngClass]="inputType == typeIndex && 'active'">
-                <a href="#" (click)="setInputType(typeIndex)">{{type}}</a>
+            <li [ngClass]="!parameter.variable && 'active'">
+                <a href="#" (click)="setIsVariable(false)">Component</a>
+            </li>
+            <li [ngClass]="parameter.variable && 'active'">
+                <a href="#" (click)="setIsVariable(true)">Variable</a>
             </li>
         </ul>
-        <div>
+        <div *ngIf="!parameter.variable">
             <input
-                *ngIf="showAutocomplete()"
                 class="form-control input-sm" 
                 auto-complete
                 [(ngModel)]="autocompleteModel"
-                [source]="getParameters()"
+                [source]="componentLib"
                 (valueChanged)="setParameter($event)"
                 auto-complete-placeholder="{{parameter.value}}"
-                placeholder="{{parameter.value}}"/>
-            <input
-                *ngIf="inputType === 2"
-                class="form-control input-sm" 
-                [(ngModel)]="parameter.value"
-                placeholder="parameter.value"/>
-            <p *ngIf="!showAutocomplete() && inputType === 0">
-                Components not found.
-            </p>
-            <p *ngIf="!showAutocomplete() && inputType === 1">
+                placeholder="{{parameter.value}}"
+                [accept-user-input]="acceptUserInput"/>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" [(ngModel)]="acceptUserInput"> Allow user input
+                </label>
+            </div>
+        </div>
+        <div *ngIf="parameter.variable">
+            <select
+                *ngIf="scenario.table.isValid"
+                class="form-control input-sm"
+                [(ngModel)]="parameter.value">
+                <option *ngFor="let variable of scenario.table.columns" [value]="variable">{{variable}}</option>
+            </select>
+            <p *ngIf="!scenario.table.isValid">
                 There are no variables in the current scenario.
             </p>
         </div>
-        <br>
-        <a href="#" (click)="showTooltip = false">Close</a>
     </div>
 </div>
