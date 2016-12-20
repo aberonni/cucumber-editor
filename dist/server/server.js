@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
-var config_1 = require('./config');
-var nightwatchParser_1 = require('./nightwatchParser');
+var config_1 = require("./config");
+var nightwatchParser_1 = require("./nightwatchParser");
 var path = require('path');
 var open = require('open');
 var glob = require('glob');

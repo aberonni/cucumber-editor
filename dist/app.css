@@ -100,8 +100,22 @@ input[type="text"].minimal{
     width: 100%;
 }
 
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: #bbb;
+    box-shadow: none;
+}
+
 /* KEYWORDS */
-.keyword {
+.keyword:not(input) {
     color: #c7254e !important;
 }
 /*# sourceMappingURL=app.css.map*/

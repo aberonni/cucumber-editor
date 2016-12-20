@@ -1,7 +1,7 @@
 "use strict";
-var step_parameter_1 = require('./step-parameter');
+var step_parameter_1 = require("./step-parameter");
 var REGEXP_TESTER = /\(([^\)]+)\)/g;
-var REGEXP_DISPLAY_NAME = '(PARAMETER)';
+var REGEXP_DISPLAY_NAME = 'PARAMETER';
 var Step = (function () {
     function Step(name, type) {
         this.type = type;
@@ -48,7 +48,7 @@ var Step = (function () {
                 str = '';
             }
             if ((value && value.length > 0) || regexp) {
-                chunks.push(new step_parameter_1.StepParameter(value, regexp));
+                chunks.push(new step_parameter_1.StepParameter(value, regexp, REGEXP_DISPLAY_NAME));
             }
         }
         return chunks;
