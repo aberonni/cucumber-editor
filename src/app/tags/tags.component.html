@@ -1,5 +1,5 @@
 <ul>
-    <li *ngFor="let tag of tags.values">
+    <li *ngFor="let tag of tags.values" [ngClass]="getClass(tag)">
         @<input 
             type="text"
             class="minimal"
@@ -11,5 +11,6 @@
         #tagInput
         type="text"
         class="minimal"
-        placeholder="new-tag"/>
+        placeholder="new-tag"
+        required/>
 </form>
