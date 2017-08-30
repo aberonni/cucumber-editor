@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var step_1 = require("../src/app/step/step");
 var NightwatchParser = (function () {
     function NightwatchParser() {

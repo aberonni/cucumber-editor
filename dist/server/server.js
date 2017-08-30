@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var config_1 = require("./config");
 var nightwatchParser_1 = require("./nightwatchParser");
 var path = require('path');

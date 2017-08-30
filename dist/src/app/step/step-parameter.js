@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var StepParameter = (function () {
     function StepParameter(value, regexp, defaultValue) {
         this.value = value;

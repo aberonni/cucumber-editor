@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var step_parameter_1 = require("./step-parameter");
 var REGEXP_TESTER = /\(([^\)]+)\)/g;
 var REGEXP_DISPLAY_NAME = 'PARAMETER';
